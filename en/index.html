@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Coffee Bean Index — A Reference for Origin, Variety, and Process</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede1;
+    --paper-deep: #ebe1d0;
+    --paper-card: #faf5ea;
+    --ink: #2a1f17;
+    --ink-soft: #5a4a3c;
+    --ink-faded: #8a7a6c;
+    --rule: #c9b8a0;
+    --rule-soft: #ddcfb8;
+    --accent: #6b4226;
+    --accent-deep: #4a2d18;
+    --accent-soft: #c8a685;
+    --gold: #b8893d;
+    --green: #5a7c3e;
+    --plum: #6b3a4f;
+    --teal: #2d5b4e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-image:
+      radial-gradient(circle at 25% 20%, rgba(184, 137, 61, 0.04) 0%, transparent 60%),
+      radial-gradient(circle at 75% 70%, rgba(107, 66, 38, 0.03) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    pointer-events: none; opacity: 0.4; z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.09 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .container {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 60px 32px 120px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* HERO */
+  .hero { padding: 60px 0 80px; border-bottom: 1px solid var(--rule); margin-bottom: 60px; }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(44px, 7vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; line-height: 1.4;
+    color: var(--ink-soft); font-weight: 300;
+    max-width: 620px; font-style: italic;
+  }
+  .hero-meta {
+    display: flex; gap: 32px;
+    margin-top: 48px; padding-top: 32px;
+    border-top: 1px solid var(--rule-soft);
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faded);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 8px; }
+  .hero-meta span::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    padding: 36px 40px;
+    margin-bottom: 64px;
+  }
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 24px;
+  }
+  .toc-section {
+    margin-bottom: 24px;
+  }
+  .toc-section:last-child { margin-bottom: 0; }
+  .toc-section-label {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc ul { list-style: none; }
+  .toc li {
+    padding: 6px 0;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .toc a {
+    color: var(--ink); text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-size: 17px; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .toc a:hover { color: var(--accent); font-style: italic; }
+  .toc a::before {
+    content: '→'; color: var(--accent-soft);
+    font-family: 'Inter', sans-serif;
+    margin-right: 8px;
+  }
+
+  /* SECTIONS */
+  .doc-section { margin-bottom: 100px; }
+  .doc-section-divider {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--accent);
+    padding: 60px 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    margin: 80px 0;
+    position: relative;
+  }
+  .doc-section-divider::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 12px; height: 12px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(34px, 5vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-variation-settings: "opsz" 96;
+  }
+  .section-lead {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; line-height: 1.45; font-weight: 300;
+    color: var(--ink-soft); margin-bottom: 32px; font-style: italic;
+    max-width: 700px;
+  }
+
+  .group-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent);
+    padding: 36px 0 20px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+
+  /* CARDS — origin, variety, process */
+  .card {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    margin-bottom: 28px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .card-header {
+    padding: 22px 28px;
+    background: var(--paper-deep);
+    border-bottom: 1px solid var(--rule);
+  }
+  .card-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px; line-height: 1.1;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .card-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .card-subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .card-body {
+    padding: 24px 28px;
+  }
+  .card-body p {
+    margin-bottom: 14px;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body strong { font-weight: 600; color: var(--ink); }
+  .card-body em { color: var(--accent-deep); }
+
+  /* Field grid for structured data inside cards */
+  .fields {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 8px 18px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .fields .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 3px;
+  }
+  .fields .value {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .fields .value em { color: var(--accent-deep); font-style: italic; }
+  .fields .value strong { font-weight: 500; }
+
+  .card-section {
+    padding-top: 14px;
+    margin-top: 14px;
+    border-top: 1px dashed var(--rule-soft);
+  }
+  .card-section:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+  .card-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  /* Tag pills for varieties / processes / regions */
+  .tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 4px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(184, 137, 61, 0.1);
+    border: 1px solid rgba(184, 137, 61, 0.35);
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    color: var(--accent-deep);
+  }
+  .tag.green { background: rgba(90, 124, 62, 0.1); border-color: rgba(90, 124, 62, 0.4); color: #3d5a25; }
+  .tag.plum { background: rgba(107, 58, 79, 0.1); border-color: rgba(107, 58, 79, 0.35); color: #4d2538; }
+  .tag.teal { background: rgba(45, 91, 78, 0.1); border-color: rgba(45, 91, 78, 0.35); color: #1a3d33; }
+
+  /* Farms list */
+  .farms-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 8px 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .farms-list .farm {
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--rule-soft);
+    line-height: 1.4;
+  }
+  .farms-list .farm strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .farms-list .farm em {
+    font-style: italic;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* Lists */
+  ul.styled, ol.styled {
+    margin: 12px 0 16px;
+    padding-left: 0;
+    list-style: none;
+  }
+  ul.styled li, ol.styled li {
+    padding: 5px 0 5px 22px;
+    position: relative;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  ul.styled li::before {
+    content: ''; position: absolute;
+    left: 4px; top: 14px;
+    width: 10px; height: 1px;
+    background: var(--accent);
+  }
+  ol.styled { counter-reset: olist; }
+  ol.styled li { counter-increment: olist; }
+  ol.styled li::before {
+    content: counter(olist, decimal-leading-zero);
+    position: absolute; left: 0; top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--accent); font-weight: 500;
+  }
+
+  /* Tables */
+  .table-wrap {
+    margin: 20px 0;
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    background: rgba(255, 252, 245, 0.4);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    text-align: left; padding: 12px 14px;
+    color: var(--accent);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-deep);
+    font-weight: 500;
+  }
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--rule-soft);
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-weight: 500; }
+
+  /* Callouts */
+  .callout {
+    margin: 24px 0; padding: 20px 24px;
+    background: var(--paper-deep);
+    border-left: 3px solid var(--accent);
+  }
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .callout p { font-size: 15px; line-height: 1.6; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout.frontier { border-left-color: var(--gold); background: rgba(184, 137, 61, 0.06); }
+  .callout.frontier .callout-label { color: var(--gold); }
+
+  /* Common prose */
+  .prose p { margin-bottom: 16px; font-size: 16px; line-height: 1.7; }
+  .prose strong { font-weight: 600; }
+  .prose em { color: var(--accent-deep); font-style: italic; }
+  .prose h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 22px;
+    margin: 32px 0 14px;
+  }
+
+  /* SECTION 2 — INTERACTIVE FILTER */
+  .filter-app {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 44px;
+    margin: 32px 0;
+  }
+  .filter-app h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    color: var(--paper);
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .filter-app .filter-lead {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent-soft);
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+
+  .filter-row {
+    margin-bottom: 28px;
+  }
+  .filter-row-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 12px;
+  }
+  .chip-grid {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .chip {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(244, 237, 225, 0.06);
+    border: 1px solid rgba(244, 237, 225, 0.2);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s;
+  }
+  .chip:hover {
+    background: rgba(244, 237, 225, 0.12);
+    border-color: rgba(244, 237, 225, 0.4);
+  }
+  .chip.active {
+    background: var(--accent-soft);
+    color: var(--ink);
+    border-color: var(--accent-soft);
+    font-weight: 500;
+  }
+  .chip-group-divider {
+    height: 1px;
+    background: rgba(244, 237, 225, 0.1);
+    margin: 4px 0;
+    flex: 1 0 100%;
+  }
+  .chip-group-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(244, 237, 225, 0.4);
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 2px;
+  }
+
+  .filter-buttons {
+    display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 12px 22px;
+    background: var(--accent-soft);
+    color: var(--ink);
+    border: none; cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .filter-btn:hover { background: #d6b896; }
+  .filter-btn.ghost {
+    background: transparent;
+    border: 1px solid rgba(244, 237, 225, 0.3);
+    color: var(--paper);
+  }
+  .filter-btn.ghost:hover { background: rgba(244, 237, 225, 0.08); }
+
+  .filter-result {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(244, 237, 225, 0.2);
+  }
+  .filter-result h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-soft); margin-bottom: 14px;
+  }
+  .filter-empty {
+    text-align: center;
+    padding: 40px 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent-soft);
+    opacity: 0.6;
+  }
+  .result-summary {
+    margin-bottom: 24px;
+    padding: 18px 22px;
+    background: rgba(244, 237, 225, 0.04);
+    border-left: 3px solid var(--accent-soft);
+  }
+  .result-summary .selection-name {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    color: var(--paper);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .result-summary .selection-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-soft);
+    letter-spacing: 0.1em;
+  }
+  .result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .result-table th {
+    background: rgba(244, 237, 225, 0.08);
+    color: var(--accent-soft);
+    border-bottom: 1px solid rgba(244, 237, 225, 0.2);
+    font-size: 10px; letter-spacing: 0.18em;
+  }
+  .result-table td {
+    color: var(--paper);
+    border-bottom: 1px solid rgba(244, 237, 225, 0.08);
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .result-table td:first-child { color: var(--accent-soft); font-weight: 500; }
+  .result-flag {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(184, 137, 61, 0.12);
+    border-left: 2px solid var(--gold);
+    font-size: 13.5px;
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .result-flag strong {
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 100px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .doc-footer p { margin-bottom: 12px; }
+  .footer-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--ink-faded);
+    margin-top: 20px;
+    font-style: normal;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .container { padding: 32px 20px 80px; }
+    .hero { padding: 30px 0 50px; margin-bottom: 40px; }
+    .toc { padding: 28px 24px; }
+    .card-header, .card-body { padding: 18px 20px; }
+    .fields { grid-template-columns: 110px 1fr; gap: 6px 12px; }
+    .filter-app { padding: 32px 24px; }
+    .farms-list { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { background: white; color: black; }
+    body::before { display: none; }
+    .toc, .filter-app { display: none; }
+    .card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-eyebrow">An Index, Not a Textbook</div>
+    <h1>The Coffee<br>Bean <em>Index</em></h1>
+    <p class="hero-sub">A reference for origin, variety, and process. Built for coffee lovers who already know what coffee is and just want to look up what they have in their hands and what to do with it.</p>
+    <div class="hero-meta">
+      <span>Section 1 — Reference</span>
+      <span>Section 2 — Filter</span>
+      <span>Standalone Document</span>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="prose" style="margin-bottom: 60px;">
+    <p>This document has two sections. <strong>Section 1</strong> is the reference: producing countries and their famous regions, varieties grown around the world, and processing methods. It's organized to be skimmed and looked up rather than read end-to-end. <strong>Section 2</strong> is an interactive filter that lets you select a country, variety, and process — including blends across multiple of any of those — and produces a combined summary tailored to what you have in front of you.</p>
+
+    <p>What's deliberately left out: history of coffee, equipment guides, brewing methods in detail, growing economics, social context. There are good books and websites for those things. This document does one job — quickly answer the question <em>"I have this bag in my hand, what should I expect and how should I approach it?"</em></p>
+
+    <h3>How to read entries quickly</h3>
+    <p>Each origin, variety, and process is presented as a card with structured fields. The fields are always in the same order, so once you've read one card you can navigate any of them. The most important fields for at-the-counter use are <strong>Taste image</strong>, <strong>Roasting suggestion</strong>, and <strong>Brewing suggestion</strong>.</p>
+
+    <h3>How to read an unfamiliar label</h3>
+    <p>A bag often gives you a region, an altitude, a variety name, and a process name — even when one of those is unfamiliar. Use what you can recognize as context. An "experimental anaerobic from Sidamo at 1,950m" is going to inherit Sidamo's heirloom citric character and high altitude density even if the specific fermentation isn't documented anywhere. A "regional hybrid Castillo selection from Huila" will behave like other Huila Caturra-family Colombians within a small range of variation. The unfamiliar variable narrows the answer; it rarely overrides the known ones.</p>
+
+    <p>Two categories at the end of Section 1 — <em>Other / Regional Hybrid / Unidentified Varieties</em> and <em>Experimental / Modern Innovation Processes</em> — exist to handle the things that aren't in the standard list yet. They give you decision rules rather than flavor descriptions, because predicting flavor for something we can't name precisely is dishonest.</p>
+
+    <h3>A note on accuracy</h3>
+    <p>Coffee is a living industry. Famous farms change ownership, new varieties get released, processing methods evolve year to year. The information here reflects what's broadly established in specialty coffee literature (Hoffmann's <em>World Atlas of Coffee</em>, the World Coffee Research catalog, Mikami's <em>Coffee大図鑑</em>, and others). Where this document and a fresh roaster's bag disagree, trust the bag — the farm itself or the roaster has the most current information about that specific lot.</p>
+  </section>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-label">Table of Contents</div>
+
+    <div class="toc-section">
+      <div class="toc-section-label">Section 1 — Reference</div>
+      <ul>
+        <li><a href="#countries">Producing Countries &amp; Regions</a></li>
+        <li><a href="#varieties">Coffee Varieties</a></li>
+        <li><a href="#processes">Processing Methods</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-section">
+      <div class="toc-section-label">Section 2 — Interactive</div>
+      <ul>
+        <li><a href="#filter">Combined Profile Filter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ====================================================== -->
+  <!-- SECTION 1 - REFERENCE                                    -->
+  <!-- ====================================================== -->
+  <div class="doc-section-divider">Section 1 · Reference</div>
+
+  <!-- COUNTRIES -->
+  <section id="countries" class="doc-section">
+    <h2 class="section-title">Producing Countries &amp; Regions</h2>
+    <p class="section-lead">Twenty-four countries that matter to specialty coffee, grouped by region. Each entry covers the famous growing zones, the varieties commonly grown there, the main processing traditions, the typical taste image, and — where well-documented — notable farms. Farm lists are examples, not complete lists.</p>
+
+    <div id="countries-list"></div>
+  </section>
+
+  <!-- VARIETIES -->
+  <section id="varieties" class="doc-section">
+    <h2 class="section-title">Coffee Varieties</h2>
+    <p class="section-lead">Thirty-five varieties that account for the overwhelming majority of specialty coffee, organized by family. The classical lineage runs from Typica and Bourbon, through their natural mutations and crosses, to modern hybrids developed for disease resistance. Ethiopian heirloom varieties — the genetic origin of all the others — sit in their own group because their diversity is too wide for the family-tree model. Three other coffee species (Eugenioides, Robusta, Liberica, Stenophylla) appear in their own group at the end.</p>
+
+    <div id="varieties-list"></div>
+  </section>
+
+  <!-- PROCESSES -->
+  <section id="processes" class="doc-section">
+    <h2 class="section-title">Processing Methods</h2>
+    <p class="section-lead">How the cherry becomes a green bean shapes the cup as much as where the coffee grew. The eight standard processes here cover almost any coffee you will encounter. The frontier category at the end exists because new processes are being invented faster than any reference document can keep up with.</p>
+
+    <div id="processes-list"></div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- SECTION 2 - INTERACTIVE FILTER                           -->
+  <!-- ====================================================== -->
+  <div class="doc-section-divider">Section 2 · Interactive</div>
+
+  <section id="filter" class="doc-section">
+    <h2 class="section-title">Combined Profile Filter</h2>
+    <p class="section-lead">Select what you have in front of you — country (or countries, for blends), variety (or varieties), and process (or processes). The result combines the relevant information from Section 1 into a single summary table tailored to your selection, with roasting and brewing guidance.</p>
+
+    <div class="filter-app">
+      <h3>Build a profile</h3>
+      <p class="filter-lead">Tap one or more chips in each row. Multi-select is supported in every category — for blended bags, pick everything that applies. Tap "Generate" to see the combined profile.</p>
+
+      <div class="filter-row">
+        <div class="filter-row-label">Country / Origin</div>
+        <div class="chip-grid" id="filter-countries"></div>
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-row-label">Variety / Cultivar</div>
+        <div class="chip-grid" id="filter-varieties"></div>
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-row-label">Process</div>
+        <div class="chip-grid" id="filter-processes"></div>
+      </div>
+
+      <div class="filter-buttons">
+        <button class="filter-btn" onclick="generateProfile()">Generate Profile</button>
+        <button class="filter-btn ghost" onclick="clearAll()">Clear All</button>
+      </div>
+
+      <div class="filter-result" id="filter-result">
+        <div class="filter-empty">Select chips above and tap Generate.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <p>This document is a starting point, not a destination.</p>
+    <p>The most important reference is still the cup in front of you.</p>
+    <div class="footer-mark">— END OF DOCUMENT —</div>
+  </footer>
+
+</div>
+
+<script>
+// ============================================================
+// DATA — Single source of truth for both Section 1 and Section 2
+// ============================================================
+
+// COUNTRIES will be populated below in subsequent steps
+const COUNTRIES = [
+  // ====== AFRICA ======
+  {
+    id: 'ethiopia',
+    name: 'Ethiopia',
+    nameLocal: 'ኢትዮጵያ',
+    region: 'Africa',
+    subtitle: 'The genetic origin of Arabica. Every other coffee in this index descends from trees that grew here.',
+    regions: '<strong>Yirgacheffe</strong> (in Sidama Zone, but distinguished separately by reputation) · <strong>Sidama / Sidamo</strong> · <strong>Guji</strong> · <strong>Limu</strong> · <strong>Harrar</strong> · <strong>Kaffa</strong> · <strong>Jimma</strong>',
+    commonVarieties: 'Heirloom (umbrella term for thousands of landraces), JARC selections (74110, 74112, 74158, 74140, 74148, 74165), Wush Wush, Kurume, Wolisho, Bishari, Dega',
+    typicalProcesses: 'Washed (especially Yirgacheffe), Natural (especially Harrar, Sidamo, Guji), increasingly anaerobic and experimental at higher-tier farms',
+    altitude: '1,500–2,400m (the highest commercially grown coffee in the world)',
+    harvest: 'October–February',
+    taste: 'The reference for floral, citrus, and tea-like character. Yirgacheffe washed: jasmine, lemon, bergamot, tea. Sidamo washed: floral, soft citric, peach. Guji washed: berry-leaning, more intense than Yirgacheffe. Naturals from any region: blueberry, strawberry, ripe stone fruit, sometimes wine-like or boozy. Heirloom diversity means each lot is slightly different — this is a feature.',
+    flagsHighAltitude: true,
+    farms: [
+      { name: 'Konga / Worka cooperative lots', region: 'Yirgacheffe' },
+      { name: 'Aricha washing station', region: 'Yirgacheffe' },
+      { name: 'Hambela Estate', region: 'Guji' },
+      { name: 'Ninety Plus (Gesha Village)', region: 'Bench Maji', note: 'Single-origin Geisha-style estate, separate from Panamanian operations' },
+    ]
+  },
+  {
+    id: 'kenya',
+    name: 'Kenya',
+    region: 'Africa',
+    subtitle: 'The benchmark for blackcurrant-acid intensity in washed African coffee.',
+    regions: '<strong>Nyeri</strong> · <strong>Kirinyaga</strong> · <strong>Kiambu</strong> · <strong>Murang\'a</strong> · <strong>Embu</strong> (all on the slopes of Mount Kenya, central highlands)',
+    commonVarieties: 'SL28, SL34 (the two classic Scott Lab selections), Ruiru 11, Batian, K7',
+    typicalProcesses: 'Almost exclusively washed, with the distinctive Kenyan double-fermentation method (sometimes called "Kenyan washed")',
+    altitude: '1,400–2,100m',
+    harvest: 'Main crop October–December; fly crop May–July',
+    taste: 'Blackcurrant, tomato, grapefruit, savory, big malic acidity, dense and structured. Kenya AA (the largest grade) is the household reference. The double-washed process produces a distinctly clean, savory-bright cup with very little fruit-sweetness softness — Kenyan acidity is the kind that makes your jaw clench.',
+    flagsHighAltitude: true,
+    farms: [
+      { name: 'Karatina (Nyeri factories)', region: 'Nyeri' },
+      { name: 'Tegu factory', region: 'Nyeri' },
+      { name: 'Kiamabara factory', region: 'Nyeri' },
+      { name: 'Ndaroini factory', region: 'Nyeri' },
+      { name: 'Kii factory', region: 'Kirinyaga' },
+    ]
+  },
+  {
+    id: 'rwanda',
+    name: 'Rwanda',
+    region: 'Africa',
+    subtitle: 'Bourbon-dominated, washed, lighter-bodied — the East African counterpoint to Kenya.',
+    regions: '<strong>Northern Province (Rulindo, Gakenke)</strong> · <strong>Western Province (Nyamasheke, Karongi)</strong> · <strong>Southern Province (Huye, Nyamagabe)</strong>',
+    commonVarieties: 'Bourbon (the dominant variety, locally selected over decades — sometimes called "Rwanda Red Bourbon"), Jackson, Mibirizi',
+    typicalProcesses: 'Washed (overwhelmingly), some honey and natural at higher-tier washing stations',
+    altitude: '1,500–2,000m',
+    harvest: 'March–July',
+    taste: 'Floral, sweet citrus (often orange or tangerine rather than Kenya\'s grapefruit), red apple, brown sugar, honey, soft tea-like body. Lighter and more delicate than Kenyan; sweeter than Ethiopian washed. Watch for the "potato defect" — a rare but real off-flavor in some East African washed coffees that tastes like raw potato.',
+    flagsHighAltitude: false,
+    farms: [
+      { name: 'Mahembe washing station', region: 'Western Province' },
+      { name: 'Buf Coffee (Cyamuhinda, Nyarusiza)', region: 'Southern Province' },
+      { name: 'Kanzu washing station', region: 'Western Province' },
+    ]
+  },
+  {
+    id: 'burundi',
+    name: 'Burundi',
+    region: 'Africa',
+    subtitle: 'Rwanda\'s southern neighbor. Similar profile, slightly more raw-fruit character.',
+    regions: '<strong>Kayanza</strong> · <strong>Ngozi</strong> · <strong>Kirimiro</strong> · <strong>Mumirwa</strong>',
+    commonVarieties: 'Bourbon, Jackson, Mibirizi (similar palette to Rwanda)',
+    typicalProcesses: 'Washed primarily; growing experimental processing at higher-end stations',
+    altitude: '1,400–2,000m',
+    harvest: 'February–June',
+    taste: 'Bourbon-driven sweetness, soft red fruit (raspberry, cherry), citrus, balanced acidity, often slightly more fruit-forward than Rwanda. Shares the potato defect risk with Rwanda; quality has been climbing steadily as washing infrastructure improves.',
+    farms: [
+      { name: 'Long Miles Coffee Project', region: 'Kayanza', note: 'One of the few internationally-known direct-trade operations in Burundi' },
+      { name: 'Bukeye washing station', region: 'Kayanza' },
+    ]
+  },
+  {
+    id: 'tanzania',
+    name: 'Tanzania',
+    region: 'Africa',
+    subtitle: 'The peaberry country. Often overlooked next to Kenya, but the best lots are extraordinary.',
+    regions: '<strong>Mount Kilimanjaro region</strong> · <strong>Mbeya (south)</strong> · <strong>Kigoma</strong> · <strong>Ruvuma</strong>',
+    commonVarieties: 'Bourbon, Kent (Tanzanian-developed), Nyasa (Bourbon × Kent)',
+    typicalProcesses: 'Washed primarily; naturals exist but rare in specialty',
+    altitude: '1,400–2,000m',
+    harvest: 'July–February (varies by region)',
+    taste: 'Black tea, lemon, blackberry, honey, medium body — between Kenyan intensity and Rwandan softness. Tanzanian peaberry (one round bean per cherry, instead of two flat-sided beans) is widely sold as a premium grade and tends to taste more concentrated.',
+    farms: [
+      { name: 'Burka Estate', region: 'Arusha' },
+      { name: 'Tarime/Mara cooperatives', region: 'Mara region' },
+    ]
+  },
+  {
+    id: 'uganda',
+    name: 'Uganda',
+    region: 'Africa',
+    subtitle: 'Mostly Robusta-producing, but specialty-grade Arabica from Mount Elgon is rising fast.',
+    regions: '<strong>Mount Elgon</strong> · <strong>Rwenzori (the Mountains of the Moon)</strong> · <strong>Bugisu</strong>',
+    commonVarieties: 'SL14, SL28 (Mount Elgon Arabica), Nyasaland, plus Uganda is also a major Robusta producer',
+    typicalProcesses: 'Washed (Arabica), natural for some lots',
+    altitude: '1,200–2,200m (Arabica)',
+    harvest: 'October–February',
+    taste: 'For the Mount Elgon Arabica lots that reach specialty: red apple, black tea, plum, mild citrus, balanced acidity. Less intense than Kenya; sweeter and rounder. Robusta from Uganda is generally not specialty-grade.',
+    farms: [
+      { name: 'Sipi Falls cooperative', region: 'Mount Elgon' },
+      { name: 'Bugisu Cooperative Union', region: 'Mount Elgon' },
+    ]
+  },
+  {
+    id: 'drc',
+    name: 'DR Congo',
+    region: 'Africa',
+    subtitle: 'Lake Kivu region — re-emerging Bourbon-dominated specialty after years of conflict.',
+    regions: '<strong>South Kivu</strong> · <strong>North Kivu</strong> · <strong>Ituri</strong>',
+    commonVarieties: 'Bourbon, Jackson, Mibirizi (Rwandan-style genetics)',
+    typicalProcesses: 'Washed primarily',
+    altitude: '1,400–2,000m',
+    harvest: 'March–June',
+    taste: 'Bright citrus, red fruit, floral, cleaner than you might expect given the country\'s reputation for difficult logistics. The best lots resemble Rwandan Bourbon with slightly more vibrancy. A genuine specialty-coffee revival region of the last decade.',
+  },
+
+  // ====== LATIN AMERICA ======
+  {
+    id: 'colombia',
+    name: 'Colombia',
+    region: 'Latin America',
+    subtitle: 'The most varied country in coffee. Produces year-round, with regional profiles spanning the whole specialty range.',
+    regions: '<strong>Huila</strong> · <strong>Nariño</strong> · <strong>Cauca</strong> · <strong>Antioquia</strong> · <strong>Tolima</strong> · <strong>Santander</strong> · <strong>Quindío / Caldas / Risaralda (the Eje Cafetero)</strong>',
+    commonVarieties: 'Caturra (historically dominant), Castillo (Colombia\'s rust-resistant flagship), Colombia variety, Variedad Colombia, Typica, Bourbon, increasing Geisha and Pink Bourbon at premium end',
+    typicalProcesses: 'Washed dominates; growing honey and natural; very active experimental fermentation scene at top farms',
+    altitude: '1,200–2,000m',
+    harvest: 'Two main harvests: April–June (mitaca) and October–December (main)',
+    taste: 'A spectrum rather than a single image. <strong>Huila</strong>: caramel, red fruit, balanced sweetness, smooth body. <strong>Nariño</strong>: brighter, more citric and floral, higher altitude. <strong>Cauca</strong>: similar to Nariño but with more chocolate-leaning sweetness. <strong>Antioquia</strong>: classic chocolate, nut, sweet, lower altitude leaning. <strong>Tolima</strong>: balanced, increasingly fruit-forward at higher altitudes.',
+    flagsHighAltitude: false,
+    farms: [
+      { name: 'Finca El Paraíso (Diego Bermúdez)', region: 'Cauca / Piendamó', note: 'World-famous for engineered fermentation, "Double Anaerobic" lots' },
+      { name: 'Finca Inmaculada', region: 'Cauca' },
+      { name: 'Finca Las Nubes', region: 'Huila' },
+      { name: 'Finca La Palma y El Tucán', region: 'Cundinamarca', note: 'Heroes Series experimental processing' },
+      { name: 'Finca Tamana', region: 'Huila' },
+      { name: 'Finca El Vergel', region: 'Tolima' },
+    ]
+  },
+  {
+    id: 'brazil',
+    name: 'Brazil',
+    region: 'Latin America',
+    subtitle: 'The world\'s largest producer by far. Specialty Brazil is a small fraction of total output but covers a wide quality range.',
+    regions: '<strong>Sul de Minas</strong> · <strong>Cerrado Mineiro</strong> · <strong>Mogiana</strong> · <strong>Mantiqueira de Minas</strong> · <strong>Bahia (Chapada Diamantina, Cerrado da Bahia)</strong> · <strong>Espírito Santo</strong>',
+    commonVarieties: 'Yellow Bourbon, Red Bourbon, Catuai (Yellow and Red), Mundo Novo, Acaiá, Topázio, increasing Geisha at premium specialty',
+    typicalProcesses: 'Natural (the dominant Brazilian style), Pulped Natural (a Brazilian-invented honey-style), Washed (less common, mostly higher-altitude specialty)',
+    altitude: '900–1,300m (mostly lower than other Latin American specialty origins)',
+    harvest: 'May–September',
+    taste: 'Chocolate, hazelnut, peanut, brown sugar, low acidity, full body, smooth, sweet. Brazil naturals are the standard reference for "chocolatey easy-drinker" coffee. Specialty Brazil at higher altitudes (Mantiqueira, Cerrado) starts showing red fruit and more brightness, but the country\'s signature is comfortable sweetness rather than dynamic acidity. The backbone of most espresso blends in the world.',
+    farms: [
+      { name: 'Daterra Estate', region: 'Cerrado Mineiro', note: 'Vertically integrated, many sub-lots and experimental processes' },
+      { name: 'Fazenda Santa Inês', region: 'Mantiqueira de Minas' },
+      { name: 'Fazenda Santuário Sul', region: 'Sul de Minas' },
+      { name: 'Sítio São José', region: 'Carmo de Minas / Mantiqueira de Minas' },
+      { name: 'Carmo de Minas (regional cooperative)', region: 'Sul de Minas' },
+    ]
+  },
+  {
+    id: 'guatemala',
+    name: 'Guatemala',
+    region: 'Latin America',
+    subtitle: 'Eight distinct growing regions. The reference for chocolatey-spice complexity.',
+    regions: '<strong>Antigua</strong> · <strong>Huehuetenango</strong> · <strong>Atitlán</strong> · <strong>Cobán</strong> · <strong>Acatenango</strong> · <strong>Fraijanes</strong> · <strong>San Marcos</strong> · <strong>Nuevo Oriente</strong>',
+    commonVarieties: 'Bourbon, Caturra, Catuai, Typica, Pacamara, Pache (Guatemalan Typica selection)',
+    typicalProcesses: 'Washed dominates; some experimental at top farms',
+    altitude: '1,300–2,000m',
+    harvest: 'November–April',
+    taste: '<strong>Antigua</strong>: dense, chocolate, spice, stone fruit, smoky undertone (volcanic soil influence). <strong>Huehuetenango</strong>: brighter, citric, malic, often lighter-bodied — closer to a Kenyan profile than other Guatemalans. <strong>Atitlán</strong>: balanced, chocolatey, full-bodied. The country\'s common thread: chocolate and spice with structural acidity, rarely sweet-fruity. Pacamara from Huehuetenango is a known showstopper variety here.',
+    flagsHighAltitude: true,
+    farms: [
+      { name: 'Finca El Injerto', region: 'Huehuetenango', note: 'Multi-time Cup of Excellence winner, Pacamara specialist' },
+      { name: 'Finca La Bolsa', region: 'Huehuetenango' },
+      { name: 'Beneficio La Esperanza', region: 'Antigua', note: 'Long-running estate and wet mill, Herrera family' },
+      { name: 'Finca Vista Hermosa', region: 'Huehuetenango' },
+      { name: 'Finca El Socorro', region: 'Antigua / Acatenango' },
+      { name: 'Bella Vista', region: 'Antigua' },
+    ]
+  },
+  {
+    id: 'costa-rica',
+    name: 'Costa Rica',
+    region: 'Latin America',
+    subtitle: 'The country that pioneered honey processing as we know it. Micro-mill culture is highly developed.',
+    regions: '<strong>Tarrazú</strong> · <strong>Central Valley</strong> · <strong>West Valley</strong> · <strong>Tres Ríos</strong> · <strong>Brunca</strong> · <strong>Turrialba</strong> · <strong>Orosí</strong>',
+    commonVarieties: 'Caturra, Catuai, Bourbon, Villa Sarchi, Geisha (top end), SL28 (some farms)',
+    typicalProcesses: 'Honey (white, yellow, red, black — all four widely produced), washed, natural, increasing experimental',
+    altitude: '1,200–1,900m',
+    harvest: 'November–March',
+    taste: '<strong>Tarrazú</strong> is the household reference: bright, clean, fruit-forward, citric, structured acidity, medium body. Costa Rican honey processes range from the cleanly-sweet (white honey) to the complex-syrupy (red, black honey). The country is known for clarity and consistency more than for any single dramatic profile.',
+    farms: [
+      { name: 'Hacienda La Minita', region: 'Tarrazú', note: 'One of the most renowned single estates in Costa Rica' },
+      { name: 'Las Lajas Micromill', region: 'Sabanilla de Alajuela / Central Valley', note: 'Honey-process pioneers, Chacón family' },
+      { name: 'Don Mayo Micromill', region: 'Tarrazú', note: 'Bonilla family; multiple Cup of Excellence wins' },
+      { name: 'Microbeneficio Don Eli', region: 'Tarrazú', note: 'Montero family; pioneer of experimental processes' },
+      { name: 'Finca La Pastora', region: 'Tarrazú', note: 'Part of the Don Eli operation' },
+    ]
+  },
+  {
+    id: 'panama',
+    name: 'Panama',
+    region: 'Latin America',
+    subtitle: 'Geisha\'s adopted home. Auction prices regularly set world records.',
+    regions: '<strong>Boquete</strong> · <strong>Volcán</strong> · <strong>Renacimiento</strong> (all in the western Chiriquí highlands)',
+    commonVarieties: 'Geisha (the country\'s flagship since 2004), Catuai, Caturra, Typica, Pacamara, increasing Sudan Rume and rare varieties',
+    typicalProcesses: 'Washed and natural in roughly equal measure for Geisha; honey and experimental for premium lots',
+    altitude: '1,300–1,900m',
+    harvest: 'November–March',
+    taste: 'Panamanian Geisha is the reference point for jasmine, bergamot, mandarin, white peach, tea-like body. Non-Geisha Panama: clean, balanced, somewhat resembling Costa Rican Tarrazú but typically less bright. The country\'s identity in specialty is essentially Geisha; everything else is supporting cast.',
+    flagsHighAltitude: true,
+    farms: [
+      { name: 'Hacienda La Esmeralda', region: 'Boquete', note: 'The farm that put Geisha on the world map (2004 BoP)' },
+      { name: 'Ninety Plus Coffee', region: 'Volcán', note: 'Experimental processing innovators' },
+      { name: 'Hartmann Estate', region: 'Volcán / Santa Clara' },
+      { name: 'Finca Lerida', region: 'Boquete' },
+      { name: 'Finca Sophia', region: 'Volcán' },
+      { name: 'Finca Deborah', region: 'Volcán' },
+    ]
+  },
+  {
+    id: 'el-salvador',
+    name: 'El Salvador',
+    region: 'Latin America',
+    subtitle: 'Pacamara\'s birthplace. Genetics-forward, Bourbon-leaning, the country with the highest proportion of old-variety farming in Central America.',
+    regions: '<strong>Apaneca-Ilamatepec</strong> · <strong>Alotepec-Metapán</strong> · <strong>Chichontepec</strong> · <strong>Cacahuatique</strong>',
+    commonVarieties: 'Bourbon (dominant — El Salvador is one of the last Bourbon-heavy countries), Pacas, Pacamara (Salvadoran-developed), Caturra',
+    typicalProcesses: 'Washed primarily; honey and natural increasingly common at micro-mills',
+    altitude: '1,200–1,900m',
+    harvest: 'October–March',
+    taste: 'Bourbon sweetness, chocolate, brown sugar, soft red fruit, smooth body, balanced acidity. Pacamara from El Salvador shows the variety\'s signature — big-bean, complex, savory and floral at once. Less dramatic than its Central American neighbors but reliable and elegant.',
+    farms: [
+      { name: 'Finca Kilimanjaro', region: 'Apaneca-Ilamatepec' },
+      { name: 'Finca El Carmen', region: 'Ataco / Apaneca-Ilamatepec', note: 'Alfaro family, century-old estate' },
+      { name: 'Finca Los Angeles (Los Naranjos Coffee)', region: 'Apaneca', note: 'Pacamara competition specialist' },
+      { name: 'Finca Divina Providencia', region: 'Apaneca' },
+    ]
+  },
+  {
+    id: 'honduras',
+    name: 'Honduras',
+    region: 'Latin America',
+    subtitle: 'The largest producer in Central America. Specialty quality has improved dramatically in the last 15 years.',
+    regions: '<strong>Marcala</strong> · <strong>Copán</strong> · <strong>Montecillos</strong> · <strong>Agalta</strong> · <strong>Comayagua</strong> · <strong>Opalaca</strong>',
+    commonVarieties: 'Caturra, Catuai, Bourbon, Pacas, Lempira, IHCAFE 90, Parainema',
+    typicalProcesses: 'Washed primarily; growing honey and natural specialty production',
+    altitude: '1,000–1,800m',
+    harvest: 'November–April',
+    taste: 'Mild, sweet, chocolate, caramel, soft fruit, balanced. Honduras at its best resembles Guatemalan profile but lighter-bodied and softer-acid. Marcala (the country\'s first protected denomination of origin) is the benchmark region. Less dramatic than Guatemala or Costa Rica but offers some of the best value in specialty.',
+    farms: [
+      { name: 'Finca El Puente', region: 'Marcala' },
+      { name: 'Santa Rosa de Tenancingo', region: 'Marcala' },
+    ]
+  },
+  {
+    id: 'nicaragua',
+    name: 'Nicaragua',
+    region: 'Latin America',
+    subtitle: 'Maragogype\'s home. Sweet, balanced Bourbon-family-heavy production.',
+    regions: '<strong>Jinotega</strong> · <strong>Matagalpa</strong> · <strong>Nueva Segovia</strong>',
+    commonVarieties: 'Caturra, Bourbon, Maragogype (the giant-bean Typica mutation), Pacamara, Catuai, Java',
+    typicalProcesses: 'Washed primarily; honey and natural increasingly common',
+    altitude: '1,000–1,700m',
+    harvest: 'November–March',
+    taste: 'Sweet, chocolate, caramel, mild fruit, soft acidity, good body. Similar palette to Honduras but typically slightly more developed sweetness. Nueva Segovia at altitude produces the country\'s most distinctive coffees — balanced and complex without being aggressive.',
+    farms: [
+      { name: 'Finca Mierisch (Las Manos, Limoncillo)', region: 'Jinotega / Nueva Segovia' },
+      { name: 'Finca La Bastilla', region: 'Jinotega' },
+    ]
+  },
+  {
+    id: 'mexico',
+    name: 'Mexico',
+    region: 'Latin America',
+    subtitle: 'Large producer historically, smaller specialty footprint. Chiapas is the focus.',
+    regions: '<strong>Chiapas</strong> · <strong>Veracruz</strong> · <strong>Oaxaca</strong> · <strong>Puebla</strong>',
+    commonVarieties: 'Typica, Bourbon, Caturra, Mundo Novo, Garnica',
+    typicalProcesses: 'Washed dominates',
+    altitude: '900–1,700m',
+    harvest: 'November–March',
+    taste: 'Mild, nutty, chocolatey, soft acidity, light to medium body. Mexican coffee is generally gentle and approachable rather than dramatic. Chiapas at altitude can show more brightness and citric complexity. Often used as a softening component in espresso blends.',
+  },
+  {
+    id: 'peru',
+    name: 'Peru',
+    region: 'Latin America',
+    subtitle: 'Organic-certification heavyweight. Quietly improving specialty-quality coffee from northern jungle highlands.',
+    regions: '<strong>Cajamarca</strong> · <strong>Amazonas</strong> · <strong>San Martín</strong> · <strong>Junín</strong> · <strong>Cusco</strong> · <strong>Puno</strong>',
+    commonVarieties: 'Typica, Bourbon, Caturra, Pache, Catimor, Castillo',
+    typicalProcesses: 'Washed primarily',
+    altitude: '1,200–2,000m',
+    harvest: 'May–September',
+    taste: 'Sweet, chocolate, mild citrus, balanced, often described as "clean and pleasant." Northern Peruvian (Cajamarca, Amazonas) is the best-known specialty source — somewhat resembling Colombian Tolima or Honduran Marcala. Less dramatic than its more famous neighbors but reliable.',
+  },
+  {
+    id: 'bolivia',
+    name: 'Bolivia',
+    region: 'Latin America',
+    subtitle: 'Tiny specialty footprint, but Yungas region produces remarkable lots.',
+    regions: '<strong>Yungas (Caranavi)</strong> · <strong>Apolo</strong>',
+    commonVarieties: 'Typica, Caturra, Catuai',
+    typicalProcesses: 'Washed primarily',
+    altitude: '1,300–1,900m',
+    harvest: 'July–November',
+    taste: 'Floral, citrus, sweet stone fruit, clean, often surprising for those who try Bolivian for the first time. The country\'s small specialty output and challenging logistics keep it under-appreciated, but Caranavi-area lots can rival the better Colombian or Costa Rican coffees.',
+  },
+  {
+    id: 'ecuador',
+    name: 'Ecuador',
+    region: 'Latin America',
+    subtitle: 'Small producer with extreme altitudes. Geisha and rare-variety specialist farms.',
+    regions: '<strong>Loja</strong> · <strong>Pichincha</strong> · <strong>Imbabura</strong>',
+    commonVarieties: 'Typica, Caturra, Bourbon, increasing Geisha and Sidra (Ecuadorian Typica-related variety)',
+    typicalProcesses: 'Washed, increasingly experimental at top farms',
+    altitude: '1,200–2,400m (some of the highest in the world)',
+    harvest: 'May–September',
+    taste: 'Bright, complex, often surprising for the high altitudes — can resemble Ethiopian or top-tier Colombian. Sidra variety from Ecuador (a recently spotlighted Typica relative) is producing some of the most-talked-about competition coffees of the last few years.',
+    flagsHighAltitude: true,
+    farms: [
+      { name: 'Hacienda La Papaya', region: 'Loja', note: 'Multiple Cup of Excellence wins; Sidra and Typica focus' },
+      { name: 'Finca Maputo', region: 'Pichincha (La Perla, Nanegal)', note: 'Owned by Henry & Verena Gaibor; Typica, SL28, Sidra' },
+      { name: 'Cruz Loma', region: 'Loja', note: 'Multiple Cup of Excellence top placements' },
+      { name: 'Finca Eliza / Finca La Noria (CVM Coffee)', region: 'Loja', note: 'Recent Cup of Excellence Geisha winners' },
+    ]
+  },
+
+  // ====== ASIA & PACIFIC ======
+  {
+    id: 'indonesia',
+    name: 'Indonesia',
+    region: 'Asia & Pacific',
+    subtitle: 'Earthy, full-bodied, distinctive. Wet-hulling (Giling Basah) gives Indonesian coffee its unique character.',
+    regions: '<strong>Sumatra (Mandheling, Lintong, Aceh)</strong> · <strong>Java</strong> · <strong>Sulawesi (Toraja, Kalossi)</strong> · <strong>Bali (Kintamani)</strong> · <strong>Flores (Bajawa)</strong> · <strong>Papua</strong>',
+    commonVarieties: 'Typica, Bourbon, Catimor, Tim Tim, Sigararutang, Ateng, S795, several local Indonesian selections',
+    typicalProcesses: 'Wet-hulled (Giling Basah, the Indonesian signature), washed at higher-end farms, natural, some experimental',
+    altitude: '900–1,700m',
+    harvest: 'Varies by island; Sumatra September–March, Sulawesi May–November, Java June–October',
+    taste: 'Earthy, herbal, savory, full-bodied, low acidity, often with cedar, tobacco, dark chocolate, mushroom, spice. Sumatran Mandheling is the genre reference — distinctly different from the bright fruit of African or Latin American coffee. Higher-end Sulawesi and washed Sumatran lots are cleaner and more dynamic but retain the Indonesian body. Acquired taste for those used to Nordic-style washed Africans, but irreplaceable for those who love it.',
+    farms: [
+      { name: 'Wahana Estate', region: 'Sumatra (North Sumatra)' },
+      { name: 'Sipirok cooperative', region: 'Sumatra (Mandheling)' },
+      { name: 'PT Toarco Jaya', region: 'Sulawesi (Toraja)' },
+    ]
+  },
+  {
+    id: 'china',
+    name: 'China',
+    region: 'Asia & Pacific',
+    subtitle: 'Yunnan province produces 98% of China\'s coffee. The 9th-largest arabica producer in the world, with a 130-year history and a specialty scene that has matured rapidly since 2010.',
+    regions: '<strong>Pu\'er</strong> (largest, ~40% of provincial output) · <strong>Baoshan</strong> (famous Lujiangba zone, National Geographical Indication 2010) · <strong>Dehong</strong> · <strong>Lincang</strong> · <strong>Xishuangbanna</strong> · <strong>Nujiang</strong>',
+    commonVarieties: 'Catimor (90%+ of plantings, locally called "Yunnan Xiaoli" or small-grain coffee), Typica, Bourbon (surviving 1950s plantings in Lujiangba), Yunka 1/2/3/4 (Chinese-developed cultivars), Purple Leaf Caturra, increasing Geisha experimentation at premium estates',
+    typicalProcesses: 'Washed (historically 90%+); growing experimental anaerobic, honey, and fermented processes since ~2010',
+    altitude: '1,000–2,000 m',
+    harvest: 'November–April',
+    taste: 'Yunnan is a spectrum, not a single profile. <strong>Pu\'er:</strong> nutty, sweet, chocolate-leaning. <strong>Baoshan:</strong> the most distinctive — pronounced citrus, sweet, berry, floral, stone fruit (Lujiangba is the reference). <strong>Dehong:</strong> citrus, nutty, sweet. <strong>Lincang:</strong> citrus, sweet, nutty, with pronounced floral notes. <strong>Xishuangbanna:</strong> nutty, citrus, sweet. Standard Catimor batches still skew nutty-chocolate with moderate acidity; specialty-rate batches (which jumped from 8% in 2021 to 31.6% in 2024) increasingly resemble cleaner, more dynamic specialty Latin American profiles.',
+    farms: [
+      { name: 'Zhukula Village original site', region: 'Binchuan, Dali', note: 'Where French missionary Alfred Liétard planted China\'s first arabica trees in 1892; 24 of those original trees still alive, plus 1,134+ over 100 years old' },
+      { name: 'Yirong Estate', region: 'Menglian County, Pu\'er', note: 'Woman-led specialty estate, internationally recognized' },
+      { name: 'Jia Zhong (Hogood Coffee) demonstration farm', region: 'Baoshan', note: 'Established 1993; longtime industry leader in Catimor cultivation and specialty processing' },
+      { name: 'Baoshan Bestain Coffee', region: 'Baoshan', note: 'Specialty processor and exporter focused on Lujiangba and surrounding areas' },
+    ]
+  },
+  {
+    id: 'vietnam',
+    name: 'Vietnam',
+    region: 'Asia & Pacific',
+    subtitle: 'World\'s second-largest producer, mostly Robusta. Specialty Arabica from Da Lat is small but growing.',
+    regions: '<strong>Da Lat (Lam Dong)</strong> · <strong>Son La</strong> · <strong>Dien Bien</strong> (Arabica regions); <strong>Central Highlands</strong> (mostly Robusta)',
+    commonVarieties: 'Catimor, Typica, Bourbon (Arabica); Robusta dominates overall production',
+    typicalProcesses: 'Washed and natural for specialty Arabica; growing experimental scene',
+    altitude: '1,200–1,800m (Arabica)',
+    harvest: 'November–March',
+    taste: 'For specialty Arabica from Da Lat: chocolate, nut, soft fruit, clean, similar in profile to a mid-range Latin American (Peruvian or Honduran). Vietnamese Robusta is its own category — dark, bitter, intense, traditionally sweetened with condensed milk in Vietnamese coffee culture; not generally treated as specialty.',
+  },
+  {
+    id: 'india',
+    name: 'India',
+    region: 'Asia & Pacific',
+    subtitle: 'The home of monsooned coffee — a unique processing tradition that produces nothing else in the world quite like it.',
+    regions: '<strong>Karnataka (Chikmagalur, Coorg, Bababudangiri)</strong> · <strong>Kerala (Wayanad, Travancore)</strong> · <strong>Tamil Nadu (Nilgiris, Pulneys)</strong>',
+    commonVarieties: 'S795, Selection 9, Cauvery, Kent, Catimor, some Typica and Bourbon',
+    typicalProcesses: 'Washed, natural, monsooned (the Indian signature — green coffee aged in monsoon humidity)',
+    altitude: '900–1,600m',
+    harvest: 'November–March',
+    taste: 'Standard washed Indian: nutty, chocolatey, low acidity, full body, mild — somewhat resembling lower-altitude Latin American. Monsooned Malabar is unique: yellow-green appearance, very low acidity, woody, earthy, full-bodied, smoke-and-spice character. An acquired taste, often used in espresso blends for body.',
+  },
+  {
+    id: 'japan',
+    name: 'Japan (Okinawa)',
+    region: 'Asia & Pacific',
+    subtitle: 'A genuine but very small origin. About 30 farms in the Yanbaru region of northern Okinawa produce micro-quantities of arabica — included here for completeness, not commercial significance. A serious tea-and-coffee culture turning toward homegrown beans.',
+    regions: '<strong>Yanbaru</strong> (northern Okinawa main island — Kunigami, Higashi villages) · <strong>Onna and Uruma</strong> (post-war pioneer plantations) · small experimental plots on neighboring islands like Tokunoshima',
+    commonVarieties: 'Typica and Mundo Novo dominate (varieties traceable to early-20th-century Brazilian Japanese migrants returning home with seeds). Some experimentation with other varieties at newer farms.',
+    typicalProcesses: 'Mostly washed and natural; experimentation increasing as the small specialty scene matures. Vulnerable to typhoons — a single bad weather year can wipe out a harvest.',
+    altitude: '150–500 m (very low for arabica — Okinawa sits at the northern edge of the coffee belt at 24–27°N)',
+    harvest: 'November–April',
+    taste: 'Generally clean, easy-drinking, low-bodied with black tea notes and a refreshing finish. Low altitude means soft beans with less concentrated flavor than tropical highland coffees. Quality varies widely; some farms produce well-regarded specialty-level coffee, others are more notable as agritourism than as cup quality. Prices are very high (¥4,300+ per 100g not unusual) reflecting tiny scale and labor costs rather than competition with the global specialty market.',
+    farms: [
+      { name: 'ADA FARM', region: 'Kunigami, Yanbaru', note: 'First Japan-grown coffee to receive specialty certification; ~800 trees managed by Yasujiro and Yuko Tokuda' },
+      { name: 'Matayoshi Coffee Farm', region: 'Higashi, Yanbaru', note: 'One of the larger operations (~2,000 trees); also a coffee tourism destination' },
+      { name: 'Nakayama Estate', region: 'Okinawa main island', note: 'Kishimoto family operation; Typica and Mundo Novo, natural processed' },
+    ]
+  },
+  {
+    id: 'hawaii',
+    name: 'United States (Hawaii)',
+    region: 'Asia & Pacific',
+    subtitle: 'The only US state with commercial coffee production. Tiny by global volume (~0.04% of world supply) but globally famous for Kona, with newer regions like Ka\'u quietly outpacing it on quality in recent years.',
+    regions: '<strong>Kona</strong> (West slopes of Hualalai and Mauna Loa, Big Island — the famous "Kona Coffee Belt", ~30 miles long, ~80 farms) · <strong>Ka\'u</strong> (South Big Island, emerging since 1990s, multiple top-10 SCA scores) · <strong>Puna</strong> · <strong>Hamakua</strong> · <strong>Maui</strong> · <strong>Kauai</strong> · <strong>Molokai</strong> · <strong>Oahu</strong>',
+    commonVarieties: 'Kona Typica (the famous lineage, descended from an 1892 Guatemala introduction; also called "Old Hawaiian"), Red and Yellow Caturra, Red Catuai, Red and Yellow Bourbon, Maragogipe, Mokka (a dwarf Bourbon mutation, mostly Maui), Pacamara (Ka\'u), Geisha at premium farms',
+    typicalProcesses: 'Washed has been the historical default; honey, natural, and yeast-inoculated washed processes have all gained traction since around 2018',
+    altitude: '150–800 m (notably lower than Latin American or African specialty origins)',
+    harvest: 'Kona blooms January–February, harvest August–December; varies by region',
+    taste: '<strong>Kona:</strong> mild, balanced, smooth, low acidity, silky body; common notes are milk chocolate, caramel, light citrus, florals. The reference is "charming, not flamboyant" — Kona is delicate where Kenyan is intense. <strong>Ka\'u:</strong> richer, more complex, often described as closer to Colombian — chocolate, cherry, citrus, with more body. <strong>Maui Mokka:</strong> distinctive — small bean, often with rose, spice, or earthy chocolate notes. Hawaiian coffee is among the most expensive in the world; the value proposition is consistency, traceability, and ethical labor (US minimum wage applies) more than dramatic cup profile.',
+    farms: [
+      { name: 'Hula Daddy Kona Coffee', region: 'Mt. Hualalai, Kona', note: 'Multiple Coffee Review 95+ scores; known for premium and co-fermented lots' },
+      { name: 'Kona Hills', region: 'Kona', note: 'Larger estate producing exotic varieties and experimental processing' },
+      { name: 'Big Island Coffee Roasters (partner farms)', region: 'Kona, Ka\'u, Puna, Hamakua', note: 'Long-running specialty roaster with direct farm relationships across the Big Island' },
+      { name: 'MauiGrown Coffee', region: 'West Maui', note: 'Estate growing Mokka, Yellow Caturra, Red Catuai, Typica' },
+    ]
+  },
+  {
+    id: 'png',
+    name: 'Papua New Guinea',
+    region: 'Asia & Pacific',
+    subtitle: 'Smallholder-driven, Bourbon-Typica heavy. Distinctively floral for the region.',
+    regions: '<strong>Highlands (Eastern Highlands, Western Highlands, Simbu)</strong>',
+    commonVarieties: 'Typica, Bourbon, Mundo Novo, Arusha (a local Bourbon selection)',
+    typicalProcesses: 'Washed primarily',
+    altitude: '1,300–1,900m',
+    harvest: 'April–September',
+    taste: 'Floral, citric, balanced, fruit-forward — closer to East African than to Indonesian, despite the geography. Highlands PNG can resemble a softer Kenyan or a more vibrant Burundi. The country\'s logistics keep production small in specialty terms but the cup quality is genuine.',
+  },
+  {
+    id: 'yemen',
+    name: 'Yemen',
+    region: 'Asia & Pacific',
+    subtitle: 'The historical bridge between Ethiopia (where coffee originated) and the rest of the world. Small modern production, very distinctive cups.',
+    regions: '<strong>Bani Matar</strong> · <strong>Haraz</strong> · <strong>Bura\'a</strong> · <strong>Ismaili</strong>',
+    commonVarieties: 'Yemen-specific landraces (Udaini, Dawairi, Tuffahi, Burai), genetically related to Ethiopian heirlooms but with centuries of separate selection',
+    typicalProcesses: 'Natural (sun-dried, traditional), some washed at higher-end farms',
+    altitude: '1,500–2,400m',
+    harvest: 'October–December',
+    taste: 'Wild, complex, fermented-fruit, dried fruit, cocoa, spice, sometimes wine-like. Yemeni coffee tastes distinctly old-world — closer to a heavily-fermented Ethiopian natural with more spice and less floral. Famously challenging supply chain; lots are small and expensive.',
+    flagsHighAltitude: true,
+  },
+];
+
+const VARIETIES = [
+  // ====== ETHIOPIAN HEIRLOOM & LANDRACE ======
+  {
+    id: 'heirloom-umbrella',
+    name: 'Heirloom (umbrella term)',
+    family: 'Ethiopian Heirloom & Landrace',
+    subtitle: 'A category, not a single variety. Refers to the thousands of native Ethiopian landraces that haven\'t been formally identified.',
+    parentage: 'None defined — these are wild and semi-wild populations of Coffea arabica in its genetic homeland',
+    grown: 'Almost exclusively Ethiopia',
+    beanCharacter: 'Variable — typically small, dense, often greenish-yellow when green',
+    disease: 'Variable',
+    taste: 'Depends entirely on region. Yirgacheffe heirlooms: jasmine, lemon, bergamot, tea-like. Sidamo: floral, soft citric, peach, apricot. Guji: berry-leaning, blueberry, cherry. The "heirloom" label on a bag tells you to expect <em>Ethiopian floral-citric-berry character</em>, with the specific region narrowing the prediction further. The diversity within Ethiopian heirloom populations is part of what makes Ethiopian coffee endlessly interesting.',
+    roast: 'Light roast is best. DTR 10–14%. Heirlooms taste their best at light development; if you roast them darker, they lose the floral high notes that make them special.',
+    brew: 'Use a method that keeps the cup clear and clean rather than heavy. Soft, low-mineral water works well with these. The general direction is gentle, not strong.',
+  },
+  {
+    id: 'jarc-74',
+    name: 'JARC 74 Series (74110, 74112, 74158)',
+    family: 'Ethiopian Heirloom & Landrace',
+    nameAlt: 'Jimma Agricultural Research Center selections',
+    subtitle: 'Government-developed heirloom selections from 1974 onward, bred from disease-resistant "mother trees."',
+    parentage: 'Selected from wild Ethiopian landraces, especially in the Metu-Bishari forest area',
+    grown: 'Ethiopia (across multiple regions; specific selections favored by zone)',
+    beanCharacter: 'Small, dense, similar to other Ethiopian heirlooms but more genetically uniform within a single number',
+    disease: 'Bred for resistance to Coffee Berry Disease (CBD); higher than typical heirloom',
+    taste: '74110 and 74112: floral, peach, classic Ethiopian washed character. 74158 has become especially prominent in recent years — heavier stone fruit, slightly more body than 74110. When you see a specific 74-number on a bag, expect more uniformity than "heirloom" but the same overall floral-citrus Ethiopian palette.',
+    roast: 'Light roast, short development. DTR 10–14%. Same approach as other heirlooms.',
+    brew: 'Same as heirloom — use a method that keeps the cup clear, with gentle handling. Soft water works well.',
+  },
+  {
+    id: 'wushwush',
+    name: 'Wush Wush',
+    family: 'Ethiopian Heirloom & Landrace',
+    subtitle: 'A specific Ethiopian landrace, originally from the Wush Wush region (Kaffa Zone). Now grown in multiple countries.',
+    parentage: 'Ethiopian landrace; precise genetic profile within heirloom diversity',
+    grown: 'Ethiopia (origin), Colombia (especially), Panama, increasingly elsewhere',
+    beanCharacter: 'Small, dense, distinctive when from origin',
+    disease: 'Lower than JARC selections',
+    taste: 'Intense floral (jasmine, honeysuckle), bergamot, tropical fruit (papaya, mango), sometimes white grape, very long sweet finish. When grown outside Ethiopia (Colombia, Panama), Wush Wush takes on some of the local terroir while keeping its floral signature. A premium-tier variety wherever it\'s grown.',
+    roast: 'Light roast, very short development. DTR 10–13%. This variety is fragile — if you roast it too dark, you destroy the floral notes you bought it for.',
+    brew: 'Treat like Geisha — use a brewing method that highlights clarity, with a gentle approach. Pull back rather than push hard.',
+  },
+
+  // ====== TYPICA FAMILY ======
+  {
+    id: 'typica',
+    name: 'Typica',
+    family: 'Typica Family',
+    subtitle: 'One of the two ancestral varieties of all non-Ethiopian Arabica. The original.',
+    parentage: 'Direct descendant of Ethiopian coffee transported to Yemen, then Java, then the Caribbean and the Americas',
+    grown: 'Latin America, Asia, parts of Africa — historically dominant, now often replaced by more disease-resistant or higher-yielding varieties',
+    beanCharacter: 'Long, oval, somewhat pointy at one end. Larger than Bourbon; lower yield',
+    disease: 'Susceptible to leaf rust and most major diseases',
+    taste: 'Clean, sweet, balanced, often described as "classical" coffee. Mild fruit, soft acidity, smooth body, gentle finish. Typica is the reference for "good but not dramatic" — it\'s the variety that defined what coffee tasted like for centuries. Less acid-forward than Bourbon, less floral than heirlooms.',
+    roast: 'Flexible — works from light through medium-dark. DTR 14–18% is the sweet spot, where Typica\'s sweetness and balance peak.',
+    brew: 'A forgiving variety. Use your normal recipe — Typica works well with most methods without needing big adjustments.',
+  },
+  {
+    id: 'maragogype',
+    name: 'Maragogype',
+    family: 'Typica Family',
+    nameAlt: 'Elephant bean',
+    subtitle: 'A natural Typica mutation discovered in Brazil. The largest coffee bean variety in the world.',
+    parentage: 'Natural mutation of Typica',
+    grown: 'Nicaragua especially, also Mexico, Guatemala, Brazil',
+    beanCharacter: 'Distinctively huge — 2x the size of normal coffee beans',
+    disease: 'Same susceptibility as Typica',
+    taste: 'Soft, sweet, mild, often described as "delicate." Lower acidity than parent Typica. The flavor is generally less dramatic than the bean size suggests; people buy Maragogype as much for its visual character as for its cup. Best lots show subtle complexity and clean sweetness.',
+    roast: 'The huge bean size means heat penetrates differently — Maragogype tends to roast unevenly at high charge temperatures. Use slower, gentler profiles. Light to medium development. DTR 14–18%.',
+    brew: 'Use a slightly coarser grind than your normal — the larger beans grind differently. Otherwise, your normal recipe works well. This is a mild-cup variety; treat it gently.',
+  },
+  {
+    id: 'java',
+    name: 'Java',
+    family: 'Typica Family',
+    subtitle: 'A distinct Typica-related selection originally from Indonesia, now grown in Latin America. Genetically related to Ethiopian heirloom populations.',
+    parentage: 'Typica-related selection with Ethiopian-related genetics; brought from Java island to Latin America in the 20th century',
+    grown: 'Cameroon, Costa Rica, El Salvador, Nicaragua, Panama, Indonesia',
+    beanCharacter: 'Long, slender, distinctive shape',
+    disease: 'Variable; some resistance to Coffee Berry Disease',
+    taste: 'Sweet, citrus, floral notes, often with a clean tea-like body. Java has a more dynamic profile than standard Typica — closer to Ethiopian heirloom in some character. A well-regarded specialty variety in countries like Nicaragua and Cameroon.',
+    roast: 'Light to light-medium emphasizes its more interesting notes. DTR 12–16%.',
+    brew: 'Use your normal recipe. Lean toward methods that preserve clarity.',
+  },
+
+  // ====== BOURBON FAMILY ======
+  {
+    id: 'bourbon',
+    name: 'Bourbon',
+    family: 'Bourbon Family',
+    subtitle: 'The other ancestral variety, alongside Typica. Named for Île Bourbon (now Réunion), where French missionaries cultivated it.',
+    parentage: 'Direct natural mutation/selection from Yemeni coffee, separate lineage from Typica',
+    grown: 'Latin America (especially El Salvador, Guatemala, Brazil), East Africa (Rwanda, Burundi), originally Réunion',
+    beanCharacter: 'Smaller and rounder than Typica; higher yield (~30% more than Typica)',
+    disease: 'Susceptible to most major diseases, similar to Typica',
+    taste: 'Sweet, complex, balanced acidity, soft red fruit, caramel, sometimes floral. More acidity than Typica, less than Geisha. Bourbon is the reference for "complete" coffee — it has all four major taste dimensions in balance. Red Bourbon and Yellow Bourbon are color variants with similar profiles.',
+    roast: 'Excellent at any roast level. Light roast brings out floral and red fruit; medium roast highlights caramel sweetness; medium-dark works without losing complexity. DTR 14–18% is the workhorse range.',
+    brew: 'A reliable variety. Use your normal recipe — no special adjustments needed.',
+  },
+  {
+    id: 'caturra',
+    name: 'Caturra',
+    family: 'Bourbon Family',
+    subtitle: 'A natural dwarf mutation of Bourbon, discovered in Brazil. Higher-yielding workhorse of Latin American coffee.',
+    parentage: 'Natural mutation of Bourbon — single gene mutation causing dwarfism',
+    grown: 'Throughout Latin America, especially Colombia (was the dominant variety before Castillo), Costa Rica, Honduras, Nicaragua',
+    beanCharacter: 'Similar to Bourbon but smaller plants, easier to harvest',
+    disease: 'Same as Bourbon — susceptible to leaf rust',
+    taste: 'Lighter than Bourbon, more citric, brighter acidity, less body. Caturra produces a clean, bright cup with good clarity but less of Bourbon\'s richness. Often described as "Latin American clean and bright" — what most Colombian coffee tasted like before Castillo took over.',
+    roast: 'Light to light-medium roast highlights its clarity. If roasted darker, Caturra loses character faster than Bourbon. Stay on the lighter side. DTR 12–16%.',
+    brew: 'Caturra responds well to slightly hotter water than your normal — this brings out more of its citric character. Otherwise, use a method that keeps the cup clear.',
+  },
+  {
+    id: 'pacas',
+    name: 'Pacas',
+    family: 'Bourbon Family',
+    subtitle: 'A Salvadoran natural mutation of Bourbon. Similar story to Caturra, different country.',
+    parentage: 'Natural mutation of Bourbon, discovered in El Salvador in 1949',
+    grown: 'El Salvador (where it was discovered), parts of Central America',
+    beanCharacter: 'Compact dwarf plant, similar bean size to Bourbon',
+    disease: 'Similar to Bourbon — susceptible to most major diseases',
+    taste: 'Sweet, balanced, soft fruit, sometimes a touch more body than Caturra. Closer to parent Bourbon in profile than Caturra is. A pleasant, reliable variety without dramatic peaks.',
+    roast: 'Same as Bourbon. Works well from light to medium-dark. DTR 14–18% suits it.',
+    brew: 'Use your normal recipe. A forgiving variety.',
+  },
+  {
+    id: 'yellow-bourbon',
+    name: 'Yellow Bourbon',
+    family: 'Bourbon Family',
+    subtitle: 'A natural color mutation of Bourbon producing yellow cherries instead of red. Especially common in Brazil.',
+    parentage: 'Natural color mutation of Red Bourbon, possibly with influence from Amarelo de Botucatu in some lines',
+    grown: 'Brazil (where it is widely grown), some other Latin American producers',
+    beanCharacter: 'Same as Bourbon',
+    disease: 'Same as Bourbon — susceptible',
+    taste: 'Sweet, soft acidity, chocolate, brown sugar, mild fruit. Yellow Bourbon is often considered slightly sweeter and rounder than Red Bourbon, though the difference is small. Common in higher-quality Brazilian naturals.',
+    roast: 'Flexible. Light to medium-dark all work. DTR 14–18% is the standard range. Pairs especially well with espresso-leaning roasts.',
+    brew: 'Use your normal recipe. A forgiving and adaptable variety.',
+  },
+  {
+    id: 'villa-sarchi',
+    name: 'Villa Sarchi',
+    family: 'Bourbon Family',
+    subtitle: 'A natural Bourbon dwarf mutation discovered in Costa Rica. Similar to Caturra and Pacas; different country.',
+    parentage: 'Natural mutation of Bourbon, discovered in Costa Rica',
+    grown: 'Costa Rica (especially West Valley), some Honduras and El Salvador',
+    beanCharacter: 'Compact dwarf plant',
+    disease: 'Similar to Bourbon — susceptible',
+    taste: 'Sweet, clean, balanced, often with bright citrus and good body. Performs well at altitude. Costa Rican Villa Sarchi from West Valley is a quietly excellent variety that doesn\'t get the attention of Caturra or Pacas but produces equally strong cups.',
+    roast: 'Light to medium. DTR 13–17% is the workhorse range.',
+    brew: 'Use your normal recipe.',
+  },
+  {
+    id: 'laurina',
+    name: 'Laurina',
+    nameAlt: 'Bourbon Pointu',
+    family: 'Bourbon Family',
+    subtitle: 'A natural Bourbon mutation with very low caffeine — about half of normal Arabica. Originally from Réunion island.',
+    parentage: 'Natural mutation of Bourbon discovered on Réunion (formerly Île Bourbon)',
+    grown: 'Small production in Réunion, Brazil, Nicaragua, El Salvador, and a handful of other countries',
+    beanCharacter: 'Distinctively pointed (the source of the name "Pointu"), smaller than standard Bourbon',
+    disease: 'Susceptible',
+    taste: 'Soft, sweet, low bitterness due to low caffeine. Often described as elegant and gentle, with citrus, light floral notes, and a mild finish. Laurina is grown for its low-caffeine character as much as its cup quality. A premium niche variety.',
+    roast: 'Light to light-medium. The natural sweetness is what justifies the variety; pushing dark dulls it. DTR 12–15%.',
+    brew: 'Use your normal recipe but a touch gentler — slightly cooler water (1–2°C below your normal) preserves the soft sweetness.',
+  },
+
+  // ====== BOURBON × TYPICA MUTATIONS & CROSSES ======
+  {
+    id: 'mundonovo',
+    name: 'Mundo Novo',
+    family: 'Bourbon × Typica Mutations & Crosses',
+    subtitle: 'A natural Brazilian cross between Bourbon and Typica, discovered in São Paulo in the 1940s.',
+    parentage: 'Sumatra (Typica-related) × Red Bourbon, natural cross discovered in Brazil',
+    grown: 'Brazil (one of the dominant varieties), some other Latin American countries',
+    beanCharacter: 'Larger than Bourbon, similar to Typica',
+    disease: 'Better disease resistance than either parent; very high yield',
+    taste: 'Sweet, balanced, chocolate, mild fruit, full body — somewhere between Bourbon\'s complexity and Typica\'s smoothness. Mundo Novo is the variety responsible for much of Brazil\'s "chocolate-easy-drinker" reputation. Less acid-forward than Bourbon; not particularly bright.',
+    roast: 'Excellent for medium and medium-dark roasts — Mundo Novo handles development well without losing sweetness. Espresso-leaning roasts (DTR 18–22%) are where it shines most.',
+    brew: 'Use a brewing method that brings out body. An excellent espresso variety. As filter coffee, slightly tighter ratios than your normal will reward you.',
+  },
+  {
+    id: 'catuai',
+    name: 'Catuai',
+    family: 'Bourbon × Typica Mutations & Crosses',
+    subtitle: 'Brazilian cross of Mundo Novo and Caturra. Comes in Yellow and Red color forms.',
+    parentage: 'Mundo Novo × Caturra, developed in Brazil',
+    grown: 'Brazil, Honduras, Nicaragua, Guatemala, Costa Rica',
+    beanCharacter: 'Compact dwarf habit (from Caturra parent) with slightly higher yield',
+    disease: 'Better than parents; still susceptible to leaf rust',
+    taste: 'Sweet, balanced, mild acidity, chocolatey-fruity. Catuai is essentially a more disease-resistant and slightly higher-yielding version of Caturra with some Mundo Novo body. Yellow Catuai is sometimes considered marginally sweeter than Red Catuai by Brazilian roasters; the difference is usually small.',
+    roast: 'Flexible — light through medium-dark all work. DTR 14–18% is the typical range.',
+    brew: 'Use your normal recipe. Both clear-cup and full-body brewing methods work.',
+  },
+  {
+    id: 'pacamara',
+    name: 'Pacamara',
+    family: 'Bourbon × Typica Mutations & Crosses',
+    subtitle: 'Salvadoran cross of Pacas (Bourbon mutation) and Maragogype (Typica mutation). Big bean, bigger flavor.',
+    parentage: 'Pacas × Maragogype, developed in El Salvador in the 1950s',
+    grown: 'El Salvador (origin), Guatemala (especially Huehuetenango), Honduras, Nicaragua',
+    beanCharacter: 'Distinctively large beans (inherited from Maragogype side)',
+    disease: 'Variable; not especially resistant',
+    taste: 'Complex, layered, often surprising. Floral and savory at once — chocolate, herbs, citrus, sometimes butter or savory notes. Pacamara is one of the most distinctive variety profiles in Latin America. Best lots from Huehuetenango or El Salvador competition farms can rival Geisha for complexity, with more body.',
+    roast: 'Like Maragogype, the large beans roast unevenly at high charge temperatures. Use slower, gentler profiles. Light to light-medium (DTR 12–16%) preserves Pacamara\'s complexity. If pushed darker, the savory layer dominates and the brightness disappears.',
+    brew: 'Use a slightly coarser grind than your normal because of the bean size. Otherwise, use your normal recipe. Pacamara reveals more layers as the cup cools — taste it across temperatures, not just when fresh.',
+  },
+
+  // ====== GEISHA & OTHER DISTINCT LINEAGES ======
+  {
+    id: 'geisha',
+    name: 'Geisha',
+    nameAlt: 'Gesha',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'The most famous specialty coffee variety in the world. From Ethiopia, via Costa Rica, to fame at Hacienda La Esmeralda in Panama.',
+    parentage: 'Ethiopian landrace, originally collected near the town of Gesha in southwestern Ethiopia',
+    grown: 'Panama (the famous Geisha origin), Colombia, Ethiopia, increasingly Costa Rica, Guatemala, Honduras, and elsewhere',
+    beanCharacter: 'Long, slender, distinctive shape — even visually identifiable',
+    disease: 'Susceptible to most diseases; low yield',
+    taste: 'Jasmine, bergamot, mandarin, white peach, tropical fruit, tea-like body, very long finish. Geisha is the reference for floral-elegant coffee. Panama Geisha (washed) is the absolute benchmark; naturals show more tropical-fruit intensity. When grown outside Panama, Geisha keeps its floral signature but takes on local terroir character.',
+    roast: 'Very light to light. Geisha is one of the most fragile varieties for over-roasting — even at medium roast, you destroy the floral notes that justify its premium price. Use the shortest practical development time. DTR 10–13% is the sweet spot.',
+    brew: 'Use a brewing method that highlights clarity. Soft, low-mineral water is best. A slightly looser ratio than your normal works well — the cup is meant to be tea-like, not heavy. This variety rewards careful brewing more than almost any other; pulling back is usually the right move, not pushing harder.',
+  },
+  {
+    id: 'sl28',
+    name: 'SL28',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'Scott Laboratories selection from Kenya, 1935. Drought-tolerant and intensely flavored.',
+    parentage: 'Selected in Kenya from a Tanganyika drought-resistant population, possibly with Yemeni-related genetics',
+    grown: 'Kenya (the variety\'s home, where it dominates specialty), some Latin American farms experimenting with it',
+    beanCharacter: 'Larger, distinctive shape; very dense at altitude',
+    disease: 'Susceptible to leaf rust and CBD; selected primarily for drought tolerance',
+    taste: 'Intense blackcurrant, tomato, grapefruit, savory, big malic acidity. SL28 is the variety responsible for Kenya\'s famous profile. In a Kenyan washed coffee, SL28 is doing most of the heavy lifting flavor-wise. Outside Kenya, SL28 keeps its acid-forward intensity.',
+    roast: 'Light to light-medium. SL28\'s acidity is its strength; medium-dark roasts dull it to flat lemon. DTR 11–15%.',
+    brew: 'If you want to feature the sharp acidity, use a method that highlights clarity. If you want to soften it, use a method that brings out body. Both directions work — it depends on whether you\'re drinking it for the brightness or in spite of it.',
+  },
+  {
+    id: 'sl34',
+    name: 'SL34',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'Scott Laboratories selection from Kenya, 1935. Often grown alongside SL28 in Kenyan washing-station blends.',
+    parentage: 'Selected in Kenya from Bourbon-related population',
+    grown: 'Kenya predominantly',
+    beanCharacter: 'Similar to SL28 but somewhat less dramatic at altitude',
+    disease: 'Susceptible',
+    taste: 'Sweeter and rounder than SL28, less aggressive acidity, more red fruit and chocolate. SL34 grown at lower altitudes than SL28 produces a softer Kenyan cup. Often blended with SL28 in Kenyan washing-station lots — the two together are what most Kenyan coffee is.',
+    roast: 'Same as SL28 — light to light-medium. DTR 12–16%.',
+    brew: 'Same as SL28 — your normal Kenyan recipe.',
+  },
+  {
+    id: 'sidra',
+    name: 'Sidra',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'A variety found in Ecuador whose precise lineage is still being researched. Possibly Typica × Bourbon, possibly older.',
+    parentage: 'Likely Typica-related, exact genetic profile under investigation',
+    grown: 'Ecuador especially (Loja); increasingly in Colombia',
+    beanCharacter: 'Long, somewhat resembling Typica',
+    disease: 'Variable; lower-yielding',
+    taste: 'Floral, citric, complex, with a distinctive bright character that\'s won multiple Cup of Excellence top-place finishes from Ecuador in recent years. Sidra has emerged as a rare-variety star of the late 2010s and 2020s.',
+    roast: 'Very light, similar to Geisha. Short development. DTR 11–14%. Treat as a delicate variety.',
+    brew: 'Use a method that keeps the cup clear. Treat it as a delicate, premium variety — gentle handling, not heavy brewing.',
+  },
+  {
+    id: 'pinkbourbon',
+    name: 'Pink Bourbon',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'A naturally-occurring color mutation of Bourbon producing pink (between yellow and red) cherries. Likely related to Ethiopian heirlooms despite the name.',
+    parentage: 'Recent genetic analysis suggests Pink Bourbon is closer to Ethiopian heirlooms than to true Bourbon, despite its name',
+    grown: 'Colombia (especially Huila and Nariño), some Ecuador and elsewhere',
+    beanCharacter: 'Similar to Bourbon',
+    disease: 'Variable',
+    taste: 'Floral, juicy, tropical fruit, often quite Geisha-adjacent in profile despite different lineage. Pink Bourbon has become very popular with Colombian micro-mills since the late 2010s.',
+    roast: 'Light, similar to Wush Wush or Geisha. Short development. DTR 11–14%.',
+    brew: 'Use your normal recipe but lean toward methods that keep the cup clean and clear. Treat it as a delicate, premium variety.',
+  },
+  {
+    id: 'tabi',
+    name: 'Tabi',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'A Colombian variety combining Typica, Bourbon, and Timor Hybrid genetics. Increasingly common on specialty bags from Colombia.',
+    parentage: 'Typica × Bourbon × Timor Hybrid, developed by Colombia\'s Cenicafé research center',
+    grown: 'Colombia',
+    beanCharacter: 'Larger beans than Caturra; similar to Bourbon',
+    disease: 'Strong rust resistance from the Timor Hybrid component',
+    taste: 'Sweet, complex, often surprising — Tabi shows more cup quality than its hybrid parentage might suggest. Common notes include red fruit, citrus, balanced acidity, and good body. A pleasant middle-ground variety that drinks well across roast levels.',
+    roast: 'Light to medium. DTR 13–17%.',
+    brew: 'Use your normal recipe. A flexible variety.',
+  },
+  {
+    id: 'sudanrume',
+    name: 'Sudan Rume',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'A wild Ethiopian-related variety from southern Sudan, used historically in breeding programs and now grown directly at top farms.',
+    parentage: 'Wild population from Sudan-Ethiopia border region',
+    grown: 'Panama (especially), Colombia, increasing experimental cultivation',
+    beanCharacter: 'Variable; lower yield',
+    disease: 'Variable',
+    taste: 'Intense floral, tropical fruit, complex, often described as similar to Geisha in profile but with more body and slightly different aromatic palette. A premium-tier variety associated with auction-grade lots.',
+    roast: 'Treat as a delicate variety. Light development; this is one to keep gentle, not to push. DTR 11–14%.',
+    brew: 'Premium-coffee handling. Use a method that keeps the cup clear and tea-like, not heavy.',
+  },
+  {
+    id: 'ombligon',
+    name: 'Ombligón',
+    family: 'Geisha & Other Distinct Lineages',
+    subtitle: 'A recently spotlighted Colombian variety, distinguished by a small protrusion ("belly button") on the bean. Has become prominent in Colombian specialty since the late 2010s.',
+    parentage: 'Possibly a regional Bourbon or Typica mutation; genetic profile still being researched. Some sources suggest possible Ethiopian-related ancestry given its complex profile.',
+    grown: 'Colombia primarily — Inmaculada, La Palma y El Tucán, and other premium Colombian micro-mills have featured it heavily in recent years',
+    beanCharacter: 'Distinctive shape with a small belly-button-like protrusion (the source of the name)',
+    disease: 'Lower-yielding; treated as a specialty-tier variety',
+    taste: 'Highly aromatic, complex, often described with tropical fruit, floral, and unusual sweetness. Sometimes compared to Geisha or Pink Bourbon in profile but with its own character — more layered, often with stone fruit and exotic fruit notes. A premium-priced rare variety.',
+    roast: 'Treat as a delicate, premium variety. Light, careful development. DTR 11–14%. If pushed dark, you waste what makes it interesting.',
+    brew: 'Use a method that keeps the cup clear. Premium-coffee handling — gentle, not heavy.',
+  },
+
+  // ====== OTHER COFFEA SPECIES ======
+  {
+    id: 'eugenioides',
+    name: 'Eugenioides',
+    nameAlt: 'Coffea eugenioides',
+    family: 'Other Coffea Species',
+    subtitle: 'Not a variety of Arabica — a separate species, and one of Arabica\'s two parents. Spectacularly sweet, low caffeine, polarizing.',
+    parentage: 'Coffea eugenioides — distinct species from Coffea arabica. Native to East African highlands (Kenya, Uganda, Rwanda, DR Congo, western Tanzania). When crossed with Coffea canephora (Robusta), it gave rise to modern Coffea arabica.',
+    grown: 'Almost exclusively at Finca Inmaculada in Colombia — small modern revival of an essentially abandoned species. A handful of other producers globally have begun trial cultivation but supply is extremely limited.',
+    beanCharacter: 'Smaller leaves and beans than Arabica. Plants are very sensitive — cannot be planted too close together. Yields per tree are tiny (sometimes ~150g of unmilled coffee per tree, a fraction of typical Arabica).',
+    disease: 'Variable; not extensively studied for commercial cultivation',
+    taste: 'Famously sweet and unusual. Common descriptors include cereal milk, toasted marshmallow, lemon drops, sesame snaps, sticky rice, papaya, cake batter. Naturally low in caffeine (~half of Arabica), which means almost no perceived bitterness — the cup tastes intensely sweet because the sugars aren\'t balanced by bitter notes. Polarizing: some drinkers find it the most extraordinary coffee they\'ve ever had ("tastes like sunshine"); others find it doesn\'t taste like coffee at all. Used as the winning espresso in Diego Campos\'s 2021 World Barista Championship and components in multiple top finishes since.',
+    roast: 'Light roast. DTR 11–14%. Eugenioides is fragile, and the whole reason to spend money on it is the unusual sweetness — if you roast it dark, you destroy that. Most roasters who have worked with it use light roasts that preserve its natural character.',
+    brew: 'Genuinely unlike other coffees — many roasters publish their own brew guides for it because normal approaches don\'t work the same way. Generally: gentler than your normal, with attention to letting the sweetness come through. Treat it as the most delicate thing in your cabinet.',
+  },
+  {
+    id: 'fine-robusta',
+    name: 'Fine Robusta',
+    nameAlt: 'Specialty Coffea canephora',
+    family: 'Other Coffea Species',
+    subtitle: 'High-end Robusta — a small but real specialty category. The bottom 99% of Robusta is commodity bitter coffee; the top 1% is something else entirely.',
+    parentage: 'Coffea canephora — the second major commercial coffee species, traditionally grown for high yield, disease resistance, and cheap commodity coffee. Specialty-grade selections are an emerging sub-category.',
+    grown: 'Uganda (Mount Elgon area, surprising specialty Robusta lots), India (Karnataka), Vietnam (premium Da Lat lots), Indonesia, Brazil. Uganda and India lead in international specialty recognition.',
+    beanCharacter: 'Rounder, smaller than Arabica beans. Higher caffeine content (~2x Arabica). Higher chlorogenic acid content drives the traditional bitterness.',
+    disease: 'High natural resistance to most major coffee diseases (the original reason it was commercialized)',
+    taste: 'Standard commodity Robusta is harshly bitter, woody, and burnt-tasting — that\'s not what specialty Fine Robusta is about. The best Fine Robusta lots show chocolate, dark cocoa, dark berries, smoky-savory character, heavy body, low acidity, and sometimes a distinctive earthy-spicy quality you don\'t get from Arabica. It still tastes like Robusta — bitterness is part of the identity — but a clean, intentional bitterness rather than a defective one. Often used in espresso blends for body and crema; increasingly drunk as single-origin filter at Robusta-curious specialty cafes.',
+    roast: 'More flexible than Arabica varieties — Robusta carries development well. Medium and medium-dark roasts often suit it; light roasts can taste under-developed and rough. The optimal direction is opposite to most Arabica varieties on this list: more development typically helps, not less. DTR 17–22% suits it.',
+    brew: 'Treat differently from Arabica. Use a slightly coarser grind than your normal Arabica setting; slightly cooler water; expect more body and lower acidity in the cup; consider serving as espresso or in milk drinks rather than as filter coffee unless the lot is specifically positioned for filter brewing.',
+  },
+  {
+    id: 'liberica',
+    name: 'Liberica',
+    nameAlt: 'Coffea liberica (incl. Excelsa)',
+    family: 'Other Coffea Species',
+    subtitle: 'A separate species, distinct from Arabica and Robusta. Long associated with Southeast Asian commodity coffee; experiencing modern specialty interest, especially from the Philippines and Malaysia.',
+    parentage: 'Coffea liberica — the third widely-cultivated species. Excelsa is now classified as a variety of Liberica.',
+    grown: 'Philippines, Malaysia, Indonesia, parts of West Africa, growing micro-cultivation in other countries',
+    beanCharacter: 'Distinctively large, irregular, often almond-shaped beans — visually very different from Arabica',
+    disease: 'High disease resistance',
+    taste: 'Polarizing. Strong, smoky, woody, often with jackfruit, dark dried fruit, and spice notes. Some Liberica is harsh and unpleasant; well-processed specialty Liberica can be remarkable — heavy, savory, distinctive in a way no Arabica is. Excelsa specifically is sometimes described as more dynamic, with dark fruit and tart character. Used by some baristas in competition routines for its unusual aromatic profile.',
+    roast: 'Like Robusta, Liberica often benefits from more roast development than Arabica. Medium to medium-dark common. DTR 16–22%.',
+    brew: 'Treat as you would Robusta or wet-hulled Indonesian — slightly coarser grind, slightly cooler water, body-emphasizing methods. Often works better as espresso or strong filter than as light pour-over.',
+  },
+  {
+    id: 'stenophylla',
+    name: 'Stenophylla',
+    nameAlt: 'Coffea stenophylla',
+    family: 'Other Coffea Species',
+    subtitle: 'A re-discovered West African species being revived for its climate resilience and Arabica-like cup quality. Very small commercial production.',
+    parentage: 'Coffea stenophylla — a separate species native to Sierra Leone and other West African countries, mostly extinct in the wild by the 20th century',
+    grown: 'Sierra Leone (revival cultivation), tiny experimental plantings elsewhere',
+    beanCharacter: 'Small beans; black cherries (most coffee species have red or yellow cherries)',
+    disease: 'Naturally heat-tolerant; tolerates temperatures and conditions where Arabica fails',
+    taste: 'Recent blind tastings have shown that Stenophylla can be perceived as similar to high-quality Arabica — sweet, complex, with fruit and floral notes. Significantly different from Robusta. The species has attracted attention as a possible climate-resilient alternative or supplement to Arabica as growing regions warm.',
+    roast: 'Treat as you would Arabica. Light to medium development is typical for the small commercial lots that exist. DTR 13–17%.',
+    brew: 'Use your normal Arabica recipe. Stenophylla is rare enough that you should follow whatever the producer recommends if any guidance comes with the bag.',
+  },
+
+  // ====== MODERN HYBRIDS ======
+  {
+    id: 'castillo',
+    name: 'Castillo',
+    family: 'Modern Hybrids',
+    subtitle: 'Colombian disease-resistant hybrid that replaced Caturra as the dominant Colombian variety.',
+    parentage: 'Caturra × Timor Hybrid (which is Arabica × Robusta carrying rust resistance)',
+    grown: 'Colombia (now dominant), some other Latin American countries',
+    beanCharacter: 'Similar to Caturra in size and shape',
+    disease: 'Strong leaf rust resistance — the reason it was developed',
+    taste: 'Modern Castillo at altitude tastes very similar to Caturra — sweet, balanced, citric, chocolatey. There was historically debate among specialty roasters about whether Castillo could match Caturra\'s cup quality; the consensus has shifted in Castillo\'s favor as growers learned to handle it. Most Colombian specialty coffee today is Castillo.',
+    roast: 'Same as Caturra — light to medium. DTR 13–17%.',
+    brew: 'Use your normal recipe. Castillo is forgiving and reliable.',
+  },
+  {
+    id: 'colombia-variety',
+    name: 'Colombia (variety)',
+    family: 'Modern Hybrids',
+    subtitle: 'Earlier Colombian disease-resistant hybrid, the predecessor to Castillo.',
+    parentage: 'Caturra × Timor Hybrid (similar to Castillo, earlier breeding generation)',
+    grown: 'Colombia',
+    beanCharacter: 'Similar to Caturra',
+    disease: 'Rust resistance',
+    taste: 'Earlier-generation Colombia variety was less consistent in cup quality than Castillo. Modern lots of older Colombia variety can taste similar to Caturra-Castillo range — sweet, balanced, mid-acidity. Less common to encounter explicitly labeled "Colombia variety" today.',
+    roast: 'Same as Castillo. DTR 13–17%.',
+    brew: 'Use your normal recipe.',
+  },
+  {
+    id: 'catimor',
+    name: 'Catimor',
+    family: 'Modern Hybrids',
+    subtitle: 'Caturra × Timor Hybrid. The precursor to many modern disease-resistant varieties.',
+    parentage: 'Caturra × Timor Hybrid (Arabica × Robusta-carrying rust resistance)',
+    grown: 'Throughout Latin America and Asia where rust resistance is needed',
+    beanCharacter: 'Variable',
+    disease: 'Strong rust resistance',
+    taste: 'Older Catimor lines were notorious for off-flavors (sometimes described as woody or astringent), reflecting the Robusta-derived genetics. Modern Catimor selections at altitude have largely overcome this — they now taste mild, chocolatey, balanced, somewhat resembling lower-altitude Latin American. Specialty Catimor is improving but remains less prized than Bourbon/Typica family.',
+    roast: 'Medium to medium-dark roast works best — Catimor doesn\'t have the high notes that benefit from light roasting. More development typically helps it. DTR 16–20%.',
+    brew: 'Use a method that brings out body rather than highlighting clarity. Otherwise, your normal recipe works.',
+  },
+  {
+    id: 'ruiru-batian',
+    name: 'Ruiru 11 / Batian',
+    family: 'Modern Hybrids',
+    subtitle: 'Kenyan disease-resistant varieties developed to replace susceptible SL28/SL34. Trying to match the Kenyan profile.',
+    parentage: 'Complex multi-parent crosses involving Catimor and Kenyan selections',
+    grown: 'Kenya',
+    beanCharacter: 'Similar to SL varieties',
+    disease: 'Strong CBD and rust resistance',
+    taste: 'Approaching but not quite matching SL28 in intensity. Ruiru 11 is sometimes considered a notch below SL28 in cup quality; Batian (newer) is closer to matching the Kenyan profile but still less dramatic. Most Kenyan specialty lots remain SL28/SL34-dominant for this reason.',
+    roast: 'Similar to SL28 — light to light-medium. DTR 12–16%.',
+    brew: 'Use your normal recipe.',
+  },
+  {
+    id: 'centroamericano',
+    name: 'Centroamericano',
+    nameAlt: 'H1',
+    family: 'Modern Hybrids',
+    subtitle: 'The first commercial F1 hybrid coffee. Cross of Sarchimor and an Ethiopian-related variety.',
+    parentage: 'F1 hybrid: Sarchimor T5296 × Sudan Rume',
+    grown: 'Central America (Nicaragua, Honduras, El Salvador, Guatemala, Costa Rica)',
+    beanCharacter: 'Variable; F1 hybrids tend to have hybrid vigor',
+    disease: 'Strong rust resistance from Sarchimor parent',
+    taste: 'Surprisingly complex for a hybrid. Often described with red fruit, floral notes, balanced acidity, and good sweetness. A successful demonstration that F1 hybrids can produce specialty-grade cups. Has won multiple Cup of Excellence competitions in Central America.',
+    roast: 'Light to medium. DTR 13–17%.',
+    brew: 'Use your normal recipe.',
+  },
+  {
+    id: 'marsellesa',
+    name: 'Marsellesa',
+    family: 'Modern Hybrids',
+    subtitle: 'A Sarchimor-derived variety widely grown in Nicaragua and elsewhere. Reliable yields with reasonable cup quality.',
+    parentage: 'Sarchimor lineage (Villa Sarchi × Timor Hybrid)',
+    grown: 'Nicaragua especially, also Honduras, Mexico, parts of Asia',
+    beanCharacter: 'Similar to Caturra',
+    disease: 'Strong rust resistance',
+    taste: 'Mild, sweet, balanced, with chocolate and soft fruit notes. Marsellesa is more about reliable everyday quality than dramatic peaks. Cleaner cup than older Catimor lines.',
+    roast: 'Light to medium. DTR 14–18%.',
+    brew: 'Use your normal recipe.',
+  },
+  {
+    id: 'starmaya',
+    name: 'Starmaya',
+    family: 'Modern Hybrids',
+    subtitle: 'A more recent F1 hybrid that — unusually for an F1 — can be propagated by seed rather than only by tissue culture.',
+    parentage: 'F1 hybrid: Marsellesa × Ethiopian-related parent (specific identity confidential)',
+    grown: 'Nicaragua (origin), expanding to other Central American countries',
+    beanCharacter: 'Hybrid vigor; good yield potential',
+    disease: 'Strong rust resistance',
+    taste: 'Complex for a hybrid — sweet, fruity, often with floral notes. Starmaya represents a step forward in F1 hybrid cup quality. Increasingly seen on specialty bags.',
+    roast: 'Light to medium. DTR 13–17%.',
+    brew: 'Use your normal recipe.',
+  },
+
+  // ====== FRONTIER CATEGORY ======
+  {
+    id: 'frontier-variety',
+    name: 'Other / Regional Hybrid / Unidentified',
+    family: 'Frontier Category',
+    subtitle: 'For varieties not covered above — undocumented heirlooms, regional crosses, F1 hybrids in trial, brand-new releases, or names you simply can\'t look up.',
+    parentage: 'By definition unknown or undocumented',
+    grown: 'Anywhere',
+    beanCharacter: 'Variable',
+    disease: 'Variable',
+    taste: '<strong>Use a prediction framework rather than a flavor description.</strong> The bag almost always gives you context: country, region, altitude, sometimes process. Use what you know:<br><br>• <strong>If labeled "heirloom" from Sidamo or Yirgacheffe</strong> → expect citrus + tea-like floral. From Guji → expect berry-leaning. From Harrar → expect intense, dried fruit, often heavy.<br>• <strong>If a regional Colombian hybrid (e.g., "Tabi," "Cenicafé 1")</strong> → behaves like Castillo-Caturra range, slight variations.<br>• <strong>If an F1 hybrid (Centroamericano, Starmaya, Marsellesa)</strong> → variable, typically more interesting cup than older Catimor; treat as light-medium roast variety.<br>• <strong>If a producer-named selection ("our farm\'s special")</strong> → trust the producer\'s recommendation if available; otherwise assume regional norm.<br>• <strong>If you have nothing to go on</strong> → start with your normal default approach and let the cup tell you which way to adjust.',
+    roast: 'When in doubt, light to light-medium roast (DTR 12–16%) is the safest starting point. Light roasts reveal the variety\'s character, which then tells you what kind of variety you actually have. Pushing dark on an unknown variety throws away your only diagnostic information.',
+    brew: 'Start with a forgiving brewing method (full immersion is the most forgiving) for the first brew. Once you\'ve tasted what you have, adjust toward whatever the cup wants — clear-cup methods if it\'s delicate, body-focused methods if it\'s more developed.',
+  },
+];
+
+const PROCESSES = [
+  // ====== CLASSICAL ======
+  {
+    id: 'washed',
+    name: 'Washed',
+    nameAlt: 'Wet process',
+    category: 'Classical',
+    subtitle: 'Cherries are pulped, fermented in water, then dried as parchment-covered seeds. The cleanest expression of variety and origin.',
+    mechanism: 'Ripe cherries are run through a pulper that removes the skin and most fruit pulp. The pulped seeds, still covered in mucilage (a sticky fruit layer), are placed in fermentation tanks for 12–48 hours. Microbes break down the mucilage, which is then washed off with clean water. The cleaned, parchment-covered seeds are dried on patios or raised beds. The whole process emphasizes removing the fruit from the seed before drying.',
+    taste: 'Clean, transparent, articulated. The variety and terroir come through without fruit-fermentation overlay. Acidity is bright and structured. Body is medium. The "default specialty coffee" character — what you taste at most third-wave cafés.',
+    roast: 'Flexible. Light roasts highlight clarity (washed coffee\'s strength). Medium-dark works without losing identity. DTR 13–18% is the workhorse range. Most roast levels suit washed coffees.',
+    brew: 'Washed coffees are the most forgiving target for brewing — most methods work. Use whatever your normal style is; washed will respond well.',
+  },
+  {
+    id: 'natural',
+    name: 'Natural',
+    nameAlt: 'Dry process, sun-dried',
+    category: 'Classical',
+    subtitle: 'Cherries are dried whole, with the seed inside the fruit. The fruit\'s sugars and aromatics influence the bean during drying.',
+    mechanism: 'Whole cherries are placed on patios, raised beds, or sometimes in mechanical dryers, with periodic turning to prevent mold. Drying takes 2–6 weeks. Once dried, the cherry husk is removed mechanically. No fermentation tank, no water-washing of mucilage. The seed is in contact with the fruit pulp through the entire drying process.',
+    taste: 'Fruity, sweet, fermented-fruit, often boozy or wine-like. Berry, strawberry, mango, sometimes "dried fruit" (raisin, fig). Heavier body than washed. Less acidic. Some natural lots have a controlled "wild" character that some drinkers love and others find off-putting.',
+    roast: 'Be slightly more careful with heat than with washed coffee at the same roast level. Naturals can develop fast in the roaster because the residual sugars speed up browning. DTR 13–17% is typical. Light to medium development usually suits them best — both extremes will fight the natural\'s character.',
+    brew: 'Naturals can over-extract if treated like a washed coffee. Use a slightly coarser grind than your normal, slightly cooler water (1–2°C below your normal), and softer brewing in general. Methods that bring out body enhance the natural fruit-sweetness. Methods that highlight clarity can make naturals taste thin and overly fermented.',
+  },
+  {
+    id: 'wethulled',
+    name: 'Wet-hulled',
+    nameAlt: 'Giling Basah',
+    category: 'Classical',
+    subtitle: 'The Indonesian signature process. Distinctive earthy, full-bodied character.',
+    mechanism: 'Cherries are pulped, briefly fermented (12–24 hours), then dried only partially — to about 30–40% moisture, not the standard 11%. The parchment is then removed at this high moisture, and the green coffee continues drying without the protective parchment layer. This gives wet-hulled coffees a distinctively dark green-blue appearance and produces distinctive flavor.',
+    taste: 'Earthy, herbal, savory, full-bodied, low acidity. Cedar, tobacco, dark chocolate, mushroom, spice. The Indonesian cup signature is mostly this process, not the variety. Wet-hulling produces a flavor profile that\'s effectively impossible to replicate with other methods.',
+    roast: 'Medium to medium-dark roast works best. The savory, earthy character benefits from development; if roasted too light, wet-hulled coffees can taste under-developed and unpleasant rather than crisp. DTR 16–20% suits them. Espresso-leaning roasts especially good.',
+    brew: 'Use a method that brings out body. A slightly tighter ratio than your normal (1–2 points lower, e.g., 1:14 instead of 1:15) often helps. Slightly cooler water (1–2°C below your normal) prevents the savory notes from going harsh. Wet-hulled coffees also make excellent espresso — the body holds up well under pressure.',
+  },
+
+  // ====== HONEY VARIANTS ======
+  {
+    id: 'honey-overview',
+    name: 'Honey Process (overview)',
+    nameAlt: 'Pulped Natural, Semi-washed',
+    category: 'Honey Variants',
+    subtitle: 'Halfway between washed and natural — pulped to remove skin, but dried with mucilage still attached.',
+    mechanism: 'Cherries are pulped (skin and most pulp removed) but the sticky mucilage layer is left on the parchment-covered seed. The seeds dry with this mucilage intact, which acts like honey on the bean (hence the name). The amount of mucilage left and the drying conditions distinguish white, yellow, red, and black honey variants. Brazil invented this style as Pulped Natural; Costa Rica refined it into the four-color system.',
+    taste: 'Sweeter than washed, cleaner than natural — the bridge between them. Body is medium-full. Acidity softer than washed. Fruit notes more developed than washed but cleaner than natural.',
+    roast: 'Like naturals, honey processes brown faster than washed because of residual sugar. Use a slightly cooler approach in the roaster. DTR 14–17% typically suits them. Light to medium development.',
+    brew: 'Methods that bring out body work especially well with honey processes. Your normal water temperature is fine; a slightly tighter ratio than usual can highlight the sweetness.',
+  },
+  {
+    id: 'honey-white',
+    name: 'White Honey',
+    category: 'Honey Variants',
+    subtitle: 'The cleanest honey — ~10–20% mucilage retained, faster drying.',
+    mechanism: 'Most mucilage is mechanically removed during pulping; what remains is dried quickly under direct sun, often with frequent turning. The result is the cleanest of the four honeys — closest to washed.',
+    taste: 'Cleaner than other honeys; subtle sweetness boost over washed; body medium. Often described as "washed-plus" rather than honey-distinctive.',
+    roast: 'Treat as washed coffee. Light to medium development. DTR 14–17%.',
+    brew: 'Use your normal washed-style recipe.',
+  },
+  {
+    id: 'honey-yellow',
+    name: 'Yellow Honey',
+    category: 'Honey Variants',
+    subtitle: '~50% mucilage retained, moderate drying time.',
+    mechanism: 'A medium amount of mucilage left on the parchment, dried over several weeks with regular turning. The "default" honey style for many Costa Rican mills.',
+    taste: 'Sweet, balanced, soft red fruit, honey, caramel, medium body. The middle of the honey range — distinctive without being intense.',
+    roast: 'Light to light-medium roast. DTR 13–16%.',
+    brew: 'Use your normal recipe. Both clear-cup and full-body brewing methods work.',
+  },
+  {
+    id: 'honey-red',
+    name: 'Red Honey',
+    category: 'Honey Variants',
+    subtitle: '~75% mucilage retained, slower drying often in shade.',
+    mechanism: 'Most mucilage left on the parchment; drying done partially in shade to slow the process and develop more complex flavors. Takes longer to produce, more risk of defect, more flavor reward when done well.',
+    taste: 'Sweeter and more complex than yellow honey; tropical fruit, syrupy body, deeper sweetness. Approaching natural-process intensity but cleaner.',
+    roast: 'Light to medium roast. DTR 14–17%.',
+    brew: 'Methods that bring out body work especially well. Slightly cooler water than your normal suits the deeper sweetness.',
+  },
+  {
+    id: 'honey-black',
+    name: 'Black Honey',
+    category: 'Honey Variants',
+    subtitle: '~100% mucilage retained, slowest drying, fully shaded.',
+    mechanism: 'No mucilage removal at all — the bean dries with the entire fruit mucilage layer, in shade, with constant turning to prevent mold. The most labor-intensive honey style. Often takes 3+ weeks to dry.',
+    taste: 'Highly fermented-fruit, almost natural-like complexity. Heavy body, syrupy sweetness, sometimes wine-like. The boundary between honey and natural processes. Premium pricing.',
+    roast: 'Treat like a natural — slightly cooler approach in the roaster, careful with development. DTR 13–16%.',
+    brew: 'Use a method that brings out body. Slightly cooler water (1–2°C below your normal) and slightly coarser grind to slow the extraction help prevent the dense sweetness from becoming muddy.',
+  },
+
+  // ====== MODERN FERMENTATION ======
+  {
+    id: 'anaerobic',
+    name: 'Anaerobic Fermentation',
+    nameAlt: 'Anaerobic, AN',
+    category: 'Modern Fermentation',
+    subtitle: 'Cherries fermented in oxygen-deprived containers (sealed tanks) before processing. Produces wild fruit and floral character.',
+    mechanism: 'Whole cherries (or pulped seeds, depending on variant) are sealed in tanks — often plastic or stainless steel — sometimes with CO₂ pumped in to displace oxygen. Fermentation runs anaerobically for 24–120+ hours, depending on producer. The pressure and absence of oxygen produces a different microbial community than open fermentation, generating distinctive aromatic compounds. After fermentation, processing continues as washed or natural. Pioneered in Costa Rica around 2014, now widespread.',
+    taste: 'Intense fruit (often tropical — pineapple, mango, lychee), wine-like, sometimes boozy or "funky," very long sweet finish, heavy aromatic intensity. The most "modern" tasting category in specialty coffee. Some drinkers find this distinctive aromatic load amazing; others find it overwhelming or unnatural.',
+    roast: 'Light to light-medium. Anaerobic coffees are extremely fragile to over-roasting — the volatile aromatics that make them special evaporate fast under heat. Use the shortest practical development time. DTR 11–14% suits them. Stay conservative on roast level.',
+    brew: 'Use cooler water (1–2°C below your normal), a slightly coarser grind than usual, and a slightly longer brew. Anaerobic coffees can over-extract aggressively if you\'re not careful. Use a forgiving brewing method if available. Drink fresh — anaerobics often peak at 7–14 days off-roast and decline faster than washed coffees.',
+  },
+  {
+    id: 'carbonic',
+    name: 'Carbonic Maceration',
+    nameAlt: 'CM',
+    category: 'Modern Fermentation',
+    subtitle: 'Adapted from winemaking. Whole cherries fermented in CO₂-flooded tanks at controlled temperature.',
+    mechanism: 'Whole intact cherries are placed in stainless steel tanks flooded with CO₂. Inside the cherry, intracellular fermentation begins — the cherry\'s own enzymes break down components without conventional yeast/microbe activity initially. Carbonic maceration produces distinct aromatic compounds compared to standard anaerobic. Sasa Sestic\'s 2015 World Barista Championship win popularized the technique; it\'s now widely practiced at top farms.',
+    taste: 'Wine-like, distinctive aromatic profile, often described as having "different fruit" than anaerobic — sometimes plum, blackcurrant, fig rather than the tropical fruit of anaerobic. Highly aromatic, intense, polarizing.',
+    roast: 'Same as anaerobic — very light, fragile, short development. DTR 11–13%.',
+    brew: 'Same as anaerobic. Cooler water, gentler approach, slightly coarser grind, fresher beans.',
+  },
+  {
+    id: 'lactic',
+    name: 'Lactic Fermentation',
+    category: 'Modern Fermentation',
+    subtitle: 'Anaerobic fermentation specifically promoting lactic-acid-producing bacteria.',
+    mechanism: 'Like anaerobic fermentation but with conditions (often warmer, sometimes inoculated with specific cultures) that encourage lactic acid bacteria over other microbes. The result is a fermented-dairy quality in the cup.',
+    taste: 'Yogurt, cream, milky-fermented character, plus the underlying variety/origin profile. Distinctive but more subtle than carbonic or anaerobic. Often described as adding richness rather than flamboyant fruit.',
+    roast: 'Light to light-medium. DTR 12–15%.',
+    brew: 'Same precautions as other modern fermentation processes — slightly cooler water than your normal, slightly coarser grind, watch for over-extraction.',
+  },
+  {
+    id: 'thermal-shock',
+    name: 'Thermal Shock',
+    category: 'Modern Fermentation',
+    subtitle: 'Diego Bermúdez\'s technique (Finca El Paraíso, Colombia). Coffee is washed alternately with hot and cold water during processing.',
+    mechanism: 'After standard fermentation, the coffee is washed with hot water, then immediately with very cold water. The thermal shock is claimed to lock in aromatic compounds and create distinctive cup characteristics. Used at El Paraíso and a growing number of Colombian micro-mills.',
+    taste: 'Very intense aromatic load, highly fruity (often tropical), distinctive even compared to anaerobic. Polarizing — some find it the cleanest of the modern processes, others find it too dramatic.',
+    roast: 'Very light. DTR 10–13%. Like anaerobic, the aromatics are fragile.',
+    brew: 'Same as anaerobic. Cooler water than your normal, gentler brewing, fresh beans.',
+  },
+  {
+    id: 'koji',
+    name: 'Koji / Yeast-Inoculated',
+    category: 'Modern Fermentation',
+    subtitle: 'Inoculated fermentation using specific cultures (Koji mold, named yeasts). Newer, less standardized.',
+    mechanism: 'Coffee is intentionally inoculated with specific microbial cultures — Koji (Aspergillus oryzae, the same culture used in sake and miso production), specific yeast strains (e.g., Saccharomyces cerevisiae, Lalvin EC-1118), or wild fermentation starters from other foods. The coffee then ferments under controlled conditions. Each culture produces distinctive aromatic compounds.',
+    taste: 'Highly variable depending on culture used. Koji-fermented coffees often show umami, savory-sweet character. Yeast-inoculated coffees often show enhanced fruit-floral. The specific producer\'s technique matters more than the broad category.',
+    roast: 'Light to light-medium. DTR 12–15%. Treat as a delicate process.',
+    brew: 'Same as other modern fermentation processes — slightly cooler, slightly coarser, gentler.',
+  },
+
+  // ====== FRONTIER CATEGORY ======
+  {
+    id: 'frontier-process',
+    name: 'Experimental / Modern Innovation',
+    category: 'Frontier Category',
+    subtitle: 'For processes invented faster than reference documents can keep up — bag-labeled "experimental," processes with novel names, or undocumented producer techniques.',
+    mechanism: 'By definition, this category catches new processes that don\'t fit the eight standard ones above. New processes appear roughly yearly: koji fermentation became prominent ~2020, thermal shock ~2018, carbonic maceration ~2015. Each new method usually involves either (a) controlling the microbial environment more tightly, (b) changing the temperature or pressure during fermentation, (c) inoculating with non-coffee cultures, or (d) introducing new chemical or physical interventions during drying.',
+    taste: '<strong>Use a prediction framework rather than a flavor description.</strong> The bag\'s vocabulary tells you which family the process is in:<br><br>• <strong>Words like "anaerobic," "sealed tank," "CO₂"</strong> → behaves like anaerobic fermentation. Expect fruit-forward, aromatic, fragile.<br>• <strong>Words like "yeast," "inoculated," "controlled fermentation," "named culture"</strong> → behaves like yeast/koji fermentation. Distinctive aromatic load, variable by culture.<br>• <strong>Words like "extended fermentation," "double fermentation," "long ferment"</strong> → expect more intense, possibly funky character. Roast and brew like anaerobic-natural.<br>• <strong>Words like "thermal," "cold," "shock"</strong> → behaves like thermal shock — very intense aromatic, very fragile.<br>• <strong>Words you simply don\'t recognize</strong> → assume modern fermentation. Default to anaerobic-style handling.',
+    roast: 'When the process is new, default to <em>light roast, short development, gentle approach</em>. DTR 11–14% is a safe starting point. The reason: modern fermentation processes generate aromatic compounds that evaporate quickly under high heat. Light roasting is the safe diagnostic move — you can taste what you have, and decide whether the next batch should go slightly more developed.',
+    brew: 'Default to: cooler water than your normal (1–2°C below), slightly coarser grind than your usual, a more forgiving brewing method, brew fresh (within 4 weeks of roast). If you don\'t know whether the process is "fragile" or "robust," assume fragile until the cup tells you otherwise.',
+  },
+];
+
+
+// ============================================================
+// RENDER FUNCTIONS
+// ============================================================
+
+function el(tag, attrs = {}, children = []) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') e.className = v;
+    else if (k === 'html') e.innerHTML = v;
+    else e.setAttribute(k, v);
+  }
+  for (const child of (Array.isArray(children) ? children : [children])) {
+    if (child == null) continue;
+    if (typeof child === 'string') e.appendChild(document.createTextNode(child));
+    else e.appendChild(child);
+  }
+  return e;
+}
+
+function renderField(label, value) {
+  if (!value) return null;
+  const wrap = el('div', { class: 'fields' });
+  const items = Array.isArray(label) ? label : [[label, value]];
+  for (const [l, v] of items) {
+    if (!v) continue;
+    wrap.appendChild(el('div', { class: 'label' }, l));
+    const valEl = el('div', { class: 'value', html: v });
+    wrap.appendChild(valEl);
+  }
+  return wrap;
+}
+
+function renderCountryCard(c) {
+  const card = el('div', { class: 'card', id: 'country-' + c.id });
+
+  const header = el('div', { class: 'card-header' }, [
+    el('div', { class: 'card-eyebrow' }, c.region),
+    el('div', { class: 'card-title', html: c.name + (c.nameLocal ? ' <em>· ' + c.nameLocal + '</em>' : '') }),
+    c.subtitle ? el('div', { class: 'card-subtitle' }, c.subtitle) : null,
+  ].filter(Boolean));
+  card.appendChild(header);
+
+  const body = el('div', { class: 'card-body' });
+
+  // Structured field grid
+  const grid = el('div', { class: 'fields' });
+  const addField = (label, value) => {
+    if (!value) return;
+    grid.appendChild(el('div', { class: 'label' }, label));
+    grid.appendChild(el('div', { class: 'value', html: value }));
+  };
+  addField('Famous regions', c.regions);
+  addField('Common varieties', c.commonVarieties);
+  addField('Typical processes', c.typicalProcesses);
+  addField('Altitude', c.altitude);
+  addField('Harvest', c.harvest);
+  body.appendChild(grid);
+
+  // Taste image section
+  const tasteSection = el('div', { class: 'card-section' });
+  tasteSection.appendChild(el('div', { class: 'card-section-label' }, 'Taste image'));
+  tasteSection.appendChild(el('p', { html: c.taste }));
+  body.appendChild(tasteSection);
+
+  // Notable farms
+  if (c.farms && c.farms.length) {
+    const farmsSection = el('div', { class: 'card-section' });
+    farmsSection.appendChild(el('div', { class: 'card-section-label' }, 'Notable farms / estates'));
+    const farmGrid = el('div', { class: 'farms-list' });
+    for (const f of c.farms) {
+      const farmEl = el('div', { class: 'farm', html: '<strong>' + f.name + '</strong>' + (f.region ? ' <em>' + f.region + '</em>' : '') + (f.note ? '<br>' + f.note : '') });
+      farmGrid.appendChild(farmEl);
+    }
+    farmsSection.appendChild(farmGrid);
+    body.appendChild(farmsSection);
+  }
+
+  card.appendChild(body);
+  return card;
+}
+
+function renderVarietyCard(v) {
+  const card = el('div', { class: 'card', id: 'variety-' + v.id });
+
+  const header = el('div', { class: 'card-header' }, [
+    el('div', { class: 'card-eyebrow' }, v.family),
+    el('div', { class: 'card-title', html: v.name + (v.nameAlt ? ' <em>· ' + v.nameAlt + '</em>' : '') }),
+    v.subtitle ? el('div', { class: 'card-subtitle' }, v.subtitle) : null,
+  ].filter(Boolean));
+  card.appendChild(header);
+
+  const body = el('div', { class: 'card-body' });
+
+  const grid = el('div', { class: 'fields' });
+  const addField = (label, value) => {
+    if (!value) return;
+    grid.appendChild(el('div', { class: 'label' }, label));
+    grid.appendChild(el('div', { class: 'value', html: value }));
+  };
+  addField('Parentage', v.parentage);
+  addField('Where grown', v.grown);
+  addField('Bean character', v.beanCharacter);
+  addField('Disease resistance', v.disease);
+  body.appendChild(grid);
+
+  const tasteSection = el('div', { class: 'card-section' });
+  tasteSection.appendChild(el('div', { class: 'card-section-label' }, 'Taste image'));
+  tasteSection.appendChild(el('p', { html: v.taste }));
+  body.appendChild(tasteSection);
+
+  if (v.roast) {
+    const roastSection = el('div', { class: 'card-section' });
+    roastSection.appendChild(el('div', { class: 'card-section-label' }, 'Roasting suggestion'));
+    roastSection.appendChild(el('p', { html: v.roast }));
+    body.appendChild(roastSection);
+  }
+
+  if (v.brew) {
+    const brewSection = el('div', { class: 'card-section' });
+    brewSection.appendChild(el('div', { class: 'card-section-label' }, 'Brewing suggestion'));
+    brewSection.appendChild(el('p', { html: v.brew }));
+    body.appendChild(brewSection);
+  }
+
+  card.appendChild(body);
+  return card;
+}
+
+function renderProcessCard(p) {
+  const card = el('div', { class: 'card', id: 'process-' + p.id });
+
+  const header = el('div', { class: 'card-header' }, [
+    el('div', { class: 'card-eyebrow' }, p.category),
+    el('div', { class: 'card-title', html: p.name + (p.nameAlt ? ' <em>· ' + p.nameAlt + '</em>' : '') }),
+    p.subtitle ? el('div', { class: 'card-subtitle' }, p.subtitle) : null,
+  ].filter(Boolean));
+  card.appendChild(header);
+
+  const body = el('div', { class: 'card-body' });
+
+  const mech = el('div', { class: 'card-section' });
+  mech.appendChild(el('div', { class: 'card-section-label' }, 'How it works'));
+  mech.appendChild(el('p', { html: p.mechanism }));
+  body.appendChild(mech);
+
+  const taste = el('div', { class: 'card-section' });
+  taste.appendChild(el('div', { class: 'card-section-label' }, 'Flavor signature'));
+  taste.appendChild(el('p', { html: p.taste }));
+  body.appendChild(taste);
+
+  if (p.roast) {
+    const roastSection = el('div', { class: 'card-section' });
+    roastSection.appendChild(el('div', { class: 'card-section-label' }, 'Roasting suggestion'));
+    roastSection.appendChild(el('p', { html: p.roast }));
+    body.appendChild(roastSection);
+  }
+
+  if (p.brew) {
+    const brewSection = el('div', { class: 'card-section' });
+    brewSection.appendChild(el('div', { class: 'card-section-label' }, 'Brewing suggestion'));
+    brewSection.appendChild(el('p', { html: p.brew }));
+    body.appendChild(brewSection);
+  }
+
+  card.appendChild(body);
+  return card;
+}
+
+// ============================================================
+// LOAD AND RENDER (called at end of script after data populated)
+// ============================================================
+function renderAll() {
+  // Render countries grouped by region
+  const countriesContainer = document.getElementById('countries-list');
+  const regionOrder = ['Africa', 'Latin America', 'Asia & Pacific'];
+  for (const region of regionOrder) {
+    const inRegion = COUNTRIES.filter(c => c.region === region);
+    if (!inRegion.length) continue;
+    countriesContainer.appendChild(el('div', { class: 'group-label' }, region));
+    for (const c of inRegion) countriesContainer.appendChild(renderCountryCard(c));
+  }
+
+  // Render varieties grouped by family
+  const varietiesContainer = document.getElementById('varieties-list');
+  const familyOrder = ['Ethiopian Heirloom & Landrace', 'Typica Family', 'Bourbon Family', 'Bourbon × Typica Mutations & Crosses', 'Geisha & Other Distinct Lineages', 'Modern Hybrids', 'Other Coffea Species', 'Frontier Category'];
+  for (const family of familyOrder) {
+    const inFamily = VARIETIES.filter(v => v.family === family);
+    if (!inFamily.length) continue;
+    varietiesContainer.appendChild(el('div', { class: 'group-label' }, family));
+    for (const v of inFamily) varietiesContainer.appendChild(renderVarietyCard(v));
+  }
+
+  // Render processes grouped by category
+  const processesContainer = document.getElementById('processes-list');
+  const categoryOrder = ['Classical', 'Honey Variants', 'Modern Fermentation', 'Frontier Category'];
+  for (const category of categoryOrder) {
+    const inCategory = PROCESSES.filter(p => p.category === category);
+    if (!inCategory.length) continue;
+    processesContainer.appendChild(el('div', { class: 'group-label' }, category));
+    for (const p of inCategory) processesContainer.appendChild(renderProcessCard(p));
+  }
+
+  // Build filter chips
+  buildFilterChips();
+}
+
+function buildFilterChips() {
+  // Countries
+  const cContainer = document.getElementById('filter-countries');
+  const regionGroups = {};
+  for (const c of COUNTRIES) {
+    if (!regionGroups[c.region]) regionGroups[c.region] = [];
+    regionGroups[c.region].push(c);
+  }
+  for (const region of ['Africa', 'Latin America', 'Asia & Pacific']) {
+    if (!regionGroups[region]) continue;
+    cContainer.appendChild(el('div', { class: 'chip-group-label' }, region));
+    for (const c of regionGroups[region]) {
+      const chip = el('div', { class: 'chip', 'data-id': c.id, 'data-type': 'country' }, c.name);
+      chip.addEventListener('click', () => chip.classList.toggle('active'));
+      cContainer.appendChild(chip);
+    }
+  }
+
+  // Varieties
+  const vContainer = document.getElementById('filter-varieties');
+  const famGroups = {};
+  for (const v of VARIETIES) {
+    if (!famGroups[v.family]) famGroups[v.family] = [];
+    famGroups[v.family].push(v);
+  }
+  for (const fam of ['Ethiopian Heirloom & Landrace', 'Typica Family', 'Bourbon Family', 'Bourbon × Typica Mutations & Crosses', 'Geisha & Other Distinct Lineages', 'Modern Hybrids', 'Other Coffea Species', 'Frontier Category']) {
+    if (!famGroups[fam]) continue;
+    vContainer.appendChild(el('div', { class: 'chip-group-label' }, fam));
+    for (const v of famGroups[fam]) {
+      const chip = el('div', { class: 'chip', 'data-id': v.id, 'data-type': 'variety' }, v.name);
+      chip.addEventListener('click', () => chip.classList.toggle('active'));
+      vContainer.appendChild(chip);
+    }
+  }
+
+  // Processes
+  const pContainer = document.getElementById('filter-processes');
+  const catGroups = {};
+  for (const p of PROCESSES) {
+    if (!catGroups[p.category]) catGroups[p.category] = [];
+    catGroups[p.category].push(p);
+  }
+  for (const cat of ['Classical', 'Honey Variants', 'Modern Fermentation', 'Frontier Category']) {
+    if (!catGroups[cat]) continue;
+    pContainer.appendChild(el('div', { class: 'chip-group-label' }, cat));
+    for (const p of catGroups[cat]) {
+      const chip = el('div', { class: 'chip', 'data-id': p.id, 'data-type': 'process' }, p.name);
+      chip.addEventListener('click', () => chip.classList.toggle('active'));
+      pContainer.appendChild(chip);
+    }
+  }
+}
+
+function getSelected(type) {
+  return Array.from(document.querySelectorAll('.chip.active[data-type="' + type + '"]'))
+    .map(c => c.getAttribute('data-id'));
+}
+
+function clearAll() {
+  document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+  document.getElementById('filter-result').innerHTML = '<div class="filter-empty">Select chips above and tap Generate.</div>';
+}
+
+function generateProfile() {
+  const countryIds = getSelected('country');
+  const varietyIds = getSelected('variety');
+  const processIds = getSelected('process');
+
+  if (countryIds.length === 0 && varietyIds.length === 0 && processIds.length === 0) {
+    document.getElementById('filter-result').innerHTML = '<div class="filter-empty">Pick at least one chip in any row.</div>';
+    return;
+  }
+
+  const countries = COUNTRIES.filter(c => countryIds.includes(c.id));
+  const varieties = VARIETIES.filter(v => varietyIds.includes(v.id));
+  const processes = PROCESSES.filter(p => processIds.includes(p.id));
+
+  const result = document.getElementById('filter-result');
+  result.innerHTML = '';
+  result.appendChild(el('h4', {}, 'Combined Profile'));
+
+  // Selection summary
+  const summary = el('div', { class: 'result-summary' });
+  const selName = [];
+  if (countries.length) selName.push(countries.map(c => c.name).join(' + '));
+  if (varieties.length) selName.push(varieties.map(v => v.name).join(' + '));
+  if (processes.length) selName.push(processes.map(p => p.name).join(' + '));
+  summary.appendChild(el('div', { class: 'selection-name' }, selName.join('  ·  ')));
+  const meta = [];
+  if (countries.length) meta.push(countries.length + ' origin' + (countries.length > 1 ? 's' : ''));
+  if (varieties.length) meta.push(varieties.length + ' variet' + (varieties.length > 1 ? 'ies' : 'y'));
+  if (processes.length) meta.push(processes.length + ' process' + (processes.length > 1 ? 'es' : ''));
+  summary.appendChild(el('div', { class: 'selection-meta' }, meta.join(' · ')));
+  result.appendChild(summary);
+
+  // Combined table
+  const table = el('table', { class: 'result-table' });
+  const thead = el('thead');
+  const headRow = el('tr');
+  ['Aspect', 'What to expect / what to do'].forEach(h => headRow.appendChild(el('th', {}, h)));
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = el('tbody');
+
+  function addRow(label, value) {
+    if (!value) return;
+    const tr = el('tr');
+    tr.appendChild(el('td', {}, label));
+    tr.appendChild(el('td', { html: value }));
+    tbody.appendChild(tr);
+  }
+
+  // Build aspects
+  if (countries.length) {
+    const tasteText = countries.map(c => '<strong>' + c.name + ':</strong> ' + c.taste).join('<br><br>');
+    addRow('Origin taste image', tasteText);
+  }
+
+  if (varieties.length) {
+    const vText = varieties.map(v => '<strong>' + v.name + ':</strong> ' + v.taste).join('<br><br>');
+    addRow('Variety character', vText);
+  }
+
+  if (processes.length) {
+    const pText = processes.map(p => '<strong>' + p.name + ':</strong> ' + p.taste).join('<br><br>');
+    addRow('Process signature', pText);
+  }
+
+  // Roasting synthesis
+  const roastBits = [];
+  if (varieties.some(v => v.roast)) {
+    roastBits.push('<strong>By variety:</strong> ' + varieties.filter(v => v.roast).map(v => v.name + ' — ' + v.roast).join(' '));
+  }
+  if (processes.some(p => p.roast)) {
+    roastBits.push('<strong>By process:</strong> ' + processes.filter(p => p.roast).map(p => p.name + ' — ' + p.roast).join(' '));
+  }
+  if (roastBits.length) addRow('Roasting suggestion', roastBits.join('<br><br>'));
+
+  // Brewing synthesis
+  const brewBits = [];
+  if (varieties.some(v => v.brew)) {
+    brewBits.push('<strong>By variety:</strong> ' + varieties.filter(v => v.brew).map(v => v.name + ' — ' + v.brew).join(' '));
+  }
+  if (processes.some(p => p.brew)) {
+    brewBits.push('<strong>By process:</strong> ' + processes.filter(p => p.brew).map(p => p.name + ' — ' + p.brew).join(' '));
+  }
+  if (brewBits.length) addRow('Brewing suggestion', brewBits.join('<br><br>'));
+
+  table.appendChild(tbody);
+  result.appendChild(table);
+
+  // Flag combinations that need care
+  const flags = [];
+  // High altitude + dark roast warning
+  const hasHighAltitude = countries.some(c => c.flagsHighAltitude);
+  const hasDarkRoastVariety = varieties.some(v => v.id === 'geisha' || v.id === 'sl28');
+  if (hasDarkRoastVariety) {
+    flags.push('Roasting these varieties dark wastes their distinguishing florals and acidity. Stay light to light-medium.');
+  }
+  // Anaerobic + light roast = fragile
+  if (processes.some(p => p.id === 'anaerobic' || p.id === 'carbonic')) {
+    flags.push('Anaerobic and carbonic-maceration coffees are fragile to over-extraction. Brew slightly cooler (1–2°C below your normal) and slightly coarser than you would for the same variety washed.');
+  }
+  // Naturals + light roast warning
+  if (processes.some(p => p.id === 'natural') && (varieties.some(v => v.id === 'geisha' || v.id === 'wushwush'))) {
+    flags.push('Highly delicate variety + natural process is a known difficult combination. Drink fresh (within 4 weeks of roast); these can taste boozy or fermented quickly with poor storage.');
+  }
+  // Multi-process blend warning
+  if (processes.length > 1) {
+    flags.push('A multi-process blend will not extract uniformly — the natural-side will release flavor faster than the washed-side. Brew slightly coarser and longer than either component would individually want.');
+  }
+  // Multi-country blend warning
+  if (countries.length > 1) {
+    flags.push('A multi-origin blend usually needs you to roast or brew toward the harder-to-extract component, then accept some compromise on the easier one. A common approach: pick the one with the highest density (often the lightest-roasted) and calibrate to it.');
+  }
+
+  if (flags.length) {
+    for (const f of flags) {
+      const flag = el('div', { class: 'result-flag', html: '<strong>Flag</strong>' + f });
+      result.appendChild(flag);
+    }
+  }
+}
+
+// Trigger render — handle the case where DOMContentLoaded already fired
+// (common on iOS Safari when opening local HTML files)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderAll);
+} else {
+  renderAll();
+}
+</script>
+</body>
+</html>
